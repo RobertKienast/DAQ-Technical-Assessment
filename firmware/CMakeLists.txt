@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.22)
 project(firmware)
 
 add_subdirectory(solution)
+add_subdirectory(modules/dbcppp)
 
 add_custom_target(clean-all
     COMMAND ${CMAKE_COMMAND} --build ${CMAKE_BINARY_DIR} --target clean
