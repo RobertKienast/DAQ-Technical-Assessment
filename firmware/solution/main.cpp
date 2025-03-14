@@ -1,8 +1,15 @@
 
-#include <iostream>
+#include "decoder.hpp"
+
+
+
+
+//std::unordered_map<uint64_t, const dbcppp::IMessage *> extractDcbFile(std::string file, std::shared_ptr<dbcppp::INetwork> net);
+
+
 
 int main()
 {   
-    std::cout << "Hello World!" << std::endl;
+    run();
     return 0;
 }

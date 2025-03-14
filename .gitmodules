@@ -1,3 +1,6 @@
 [submodule "firmware/modules/dbcppp"]
 	path = firmware/modules/dbcppp
 	url = https://github.com/xR3b0rn/dbcppp.git
+[submodule "firmware/modules/dcppp"]
+	path = firmware/modules/dcppp
+	url = https://github.com/xR3b0rn/dbcppp.git

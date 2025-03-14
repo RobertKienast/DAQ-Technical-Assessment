@@ -1,0 +1,2 @@
+/usr/bin/ar qc libdecoder.a "CMakeFiles/decoder.dir/home/rob/red/DAQ-Technical-Assessment/firmware/solution/decoder.cpp.o"
+/usr/bin/ranlib libdecoder.a
