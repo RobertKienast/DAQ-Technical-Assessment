@@ -16,7 +16,10 @@ Honestly most of my time was just gettting dbcppp working.
 Honestly I didn't read through the spec sheet too much and just realized that
 the output is not stdout (which makes sense) so a dodgey solution will be done
 
-
+NOTE 
+you may have to pipe the input
+by doing 
+./answer > output.txt
 
 Stage 3:
 Sorry about this but start the docker enviroment and connect to it by bash

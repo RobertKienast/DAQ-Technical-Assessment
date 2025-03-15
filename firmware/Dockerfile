@@ -62,7 +62,8 @@ RUN cd build/ && make -j
 ##RUN cd tests/build && cmake ..
 #RUN cd tests/build && make
 
-
+# Um I haven't docker cp the file yet..
+# that should pipe the input into a file
 #ENTRYPOINT ["./build/solution/answer > output.txt"]
 #ENTRYPOINT ["./tests/build/unit_tests"]
 ENTRYPOINT ["/usr/bin/bash"]

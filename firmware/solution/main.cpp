@@ -18,6 +18,6 @@
 int main()
 {
 
-    decode("../dbc-files/ControlBus.dbc", "../dbc-files/SensorBus.dbc", "../dbc-files/TractiveBus.dbc", "../dump.log");
+    decode("../../dbc-files/ControlBus.dbc", "../../dbc-files/SensorBus.dbc", "../../dbc-files/TractiveBus.dbc", "../../dump.log");
     return 0;
 }
