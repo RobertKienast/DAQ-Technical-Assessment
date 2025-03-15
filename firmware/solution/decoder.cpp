@@ -1,10 +1,32 @@
+
+#include <iostream>
+#include <fstream>
+#include <ctime>
+#include <string>
+#include <bits/stdc++.h>
+#include <chrono>
+
+#include <unordered_map>
+#include <dbcppp/Network.h>
+#include <dbcppp/CApi.h>
+
 #include "decoder.hpp"
 
+// Sorry about the mess usually I would make this a lot nicer
+// but I run out time (spend too much setting this up :( )
+
+// used struct timeval before but it was annoying due
+// to the usec parameters 
+struct timestamp {
+    uint64_t seconds;
+    uint64_t fracSeconds;
+};
+
 struct canframe {
-    struct timeval timestamp;
-    std::string interface; // with 5 useless
+    struct timestamp timestamp;
+    std::string interface;
     uint32_t can_id;
-    uint8_t data[8]; // none useless
+    uint8_t data[8]; 
     struct canframe *next; // linked list
     bool hasData;
     uint8_t numBits;
@@ -34,13 +56,12 @@ short convertHextoBinary (char hex){
 
 
 
-void run(){
-    std::cout << "Hello World!" << std::endl;
+void decode(std::string file1, std::string file2, std::string file3, std::string dumpLog) {
     struct canframe *headcanframe = new canframe;
-    extractDumpLog(headcanframe);
+    extractDumpLog(headcanframe, dumpLog);
     std::shared_ptr<dbcppp::INetwork> net[3];
     std::unordered_map<uint64_t, const dbcppp::IMessage *> messageMap[3];
-    std::string files[3] = {"dbc-files/ControlBus.dbc", "dbc-files/SensorBus.dbc", "dbc-files/TractiveBus.dbc"};
+    std::string files[3] = {file1, file2, file3};
     for (int i = 0; i < 3; i++) {
         {
             std::ifstream idbc(files[i]);
@@ -59,7 +80,13 @@ void run(){
     struct can_frame currentFrame;
     while (current != NULL) {
         currentFrame.can_id = current->can_id;
+        // if zero bits so empty input print out zeros
         currentFrame.can_dlc = current->numBits;
+        // if there is invalid input don't print out zeros
+        if (current->hasData == 0) {
+            current = current->next;
+            continue;
+        } 
         for (int i = 0; i < 8; i ++) {
             currentFrame.data[i] = current->data[i];
         }
@@ -68,7 +95,7 @@ void run(){
             if (message != messageMap[0].end()) {
                 const dbcppp::IMessage* msg = message->second;
                 for (const auto& signal: msg->Signals()) {
-                    std::cout << '(' << current->timestamp.tv_sec << '.' << current->timestamp.tv_usec << "): " << signal.Name() << ": ";
+                    std::cout << '(' << current->timestamp.seconds << '.' << current->timestamp.fracSeconds << "): " << signal.Name() << ": ";
                     const dbcppp::ISignal* mux_sig = msg->MuxSignal();
                     if (signal.MultiplexerIndicator() != dbcppp::ISignal::EMultiplexer::MuxValue ||
                         (mux_sig && mux_sig->Decode(currentFrame.data) == signal.MultiplexerSwitchValue()))
@@ -82,7 +109,7 @@ void run(){
             if (message != messageMap[1].end()) {
                 const dbcppp::IMessage* msg = message->second;
                 for (const auto& signal: msg->Signals()) {
-                    std::cout << '(' << current->timestamp.tv_sec << '.' << current->timestamp.tv_usec << "): " << signal.Name() << ": ";
+                    std::cout << '(' << current->timestamp.seconds << '.' << current->timestamp.fracSeconds << "): " << signal.Name() << ": ";
                     const dbcppp::ISignal* mux_sig = msg->MuxSignal();
                     if (signal.MultiplexerIndicator() != dbcppp::ISignal::EMultiplexer::MuxValue ||
                         (mux_sig && mux_sig->Decode(currentFrame.data) == signal.MultiplexerSwitchValue()))
@@ -96,7 +123,7 @@ void run(){
             if (message != messageMap[2].end()) {
                 const dbcppp::IMessage* msg = message->second;
                 for (const auto& signal: msg->Signals()) {
-                    std::cout << '(' << current->timestamp.tv_sec << '.' << current->timestamp.tv_usec << "): " << signal.Name() << ": ";
+                    std::cout << '(' << current->timestamp.seconds << '.' << current->timestamp.fracSeconds << "): " << signal.Name() << ": ";
                     const dbcppp::ISignal* mux_sig = msg->MuxSignal();
                     if (signal.MultiplexerIndicator() != dbcppp::ISignal::EMultiplexer::MuxValue ||
                         (mux_sig && mux_sig->Decode(currentFrame.data) == signal.MultiplexerSwitchValue())) {
@@ -105,12 +132,93 @@ void run(){
                 }
             }
         } else {
-            std::cout << "Somthing went wrong\n";
+            // Invalid Interace (nothing will be printed)
         }
         current = current->next;
-        
     }
 }
+
+
+
+inline void extractDumpLog(struct canframe *head, std::string dumplog) {
+    std::ifstream dumpLog(dumplog);
+    int currentByte;
+    struct canframe *current = head;
+    struct canframe *lagCurrent = head;
+    std::string line;
+    std::string timeStampString;
+    int idLength = 0;
+    int startOfData = 0;
+    std::string dataBytes;
+    while(std::getline(dumpLog, line)) {
+
+        int secondbrackedPos = 0;
+        while(line[secondbrackedPos] != ')') {
+            secondbrackedPos++;
+        }
+        timeStampString = line.substr(1, secondbrackedPos - 1);
+        uint64_t rawTimeSeconds = std::stoull(timeStampString.substr(0, timeStampString.find('.')));
+        uint64_t rawTimeFracSeconds = std::stoull(timeStampString.substr(timeStampString.find('.') + 1));
+        current->timestamp.seconds = rawTimeSeconds;
+        current->timestamp.fracSeconds = rawTimeFracSeconds;
+        current->hasData = 1;
+        startOfData = line.find("#");
+        int endOfInterface = 0;
+        while(line[secondbrackedPos + 2 + endOfInterface] != ' ') {
+            endOfInterface++;
+        }
+        current->interface = line.substr(secondbrackedPos + 2, endOfInterface);
+
+        idLength = startOfData - (secondbrackedPos + 2 + endOfInterface + 1);
+        current->can_id = stoul(line.substr(secondbrackedPos + 2 + endOfInterface + 1, idLength), nullptr, 16);
+        dataBytes = line.substr(startOfData + 1);
+        // check if it has invalid character if yes skip
+        char validCharacters[] = "ABCDEF0123456789";
+        for(char& c : dataBytes) {
+            int in = 0;
+            for (int i = 0; i < strlen(validCharacters); i++) {
+                if (c == validCharacters[i]) {
+                    in = 1;
+                    break;
+                }
+            }
+            if (in == 0) {
+                current->hasData = 0;
+                current->numBits = 0;
+            }
+        }
+        for (int i = 0; i < 8; i++) {
+            current->data[i] = 0;
+        }
+        if (dataBytes[0] != '\0' && current->hasData == 1) {
+            for (int i = 0; i < floor(dataBytes.length() / 2.0); i++) {
+                current->data[i] = (convertHextoBinary(dataBytes[2 * i]) << 4) + (convertHextoBinary(dataBytes[2 * i + 1]));
+            }
+            current->hasData = 1;
+            current->numBits = line.substr(startOfData + 1).size() * 4;
+            
+        } else if (current->hasData == 1) {
+            // has no data but still valid (so just zeros)
+            current->numBits = 0;
+        }
+        current->next = new canframe;
+        lagCurrent = current;
+        current = current->next;
+    }
+
+    // to delete the one extra allocated canframe
+    delete lagCurrent->next;
+    lagCurrent->next = NULL;
+    
+    dumpLog.close();
+}
+
+
+// STAGE 4 not done
+
+// I acidently started with stage 4 because I missread how much 
+// we can rely on the library -- its a bit broken (because I changed the canframe data would work otherwise)
+// worked on little endian but didn't get big endian to work
 
 /*  
 void manualParse(){
@@ -169,7 +277,8 @@ void manualParse(){
 }
 */
 
-inline void decode(uint64_t data, const dbcppp::ISignal* signal, uint64_t messageSize) {
+/*
+inline void manualDecode(uint64_t data, const dbcppp::ISignal* signal, uint64_t messageSize) {
     uint64_t start = signal->StartBit();
     uint64_t size = signal->BitSize();
     dbcppp::ISignal::EByteOrder endianess = signal->ByteOrder();
@@ -223,50 +332,4 @@ inline uint64_t convertToLittleEndian(uint64_t data, uint64_t size) {
     }
     return newData;
 }
-
-
-inline void extractDumpLog(struct canframe *head) {
-    std::ifstream dumpLog("dump.log");
-    int currentByte;
-    struct canframe *current = head;
-    std::string line;
-    std::string timeStampString;
-    int idLength = 0;
-    int startOfData = 0;
-    std::string dataBytes;
-    while(std::getline(dumpLog, line)) {
-        int secondbrackedPos = 0;
-        while(line[secondbrackedPos] != ')') {
-            secondbrackedPos++;
-        }
-        timeStampString = line.substr(1, secondbrackedPos - 1);
-        double rawTime = std::stod(timeStampString);
-        current->timestamp.tv_sec = int(rawTime);
-        current->timestamp.tv_usec = (rawTime - int(rawTime)) * 1000000;
-
-        startOfData = line.find("#");
-        int endOfInterface = 0;
-        while(line[secondbrackedPos + 2 + endOfInterface] != ' ') {
-            endOfInterface++;
-        }
-        current->interface = line.substr(secondbrackedPos + 2, endOfInterface);
-
-        idLength = startOfData - (secondbrackedPos + 2 + endOfInterface + 1);
-        current->can_id = stoul(line.substr(secondbrackedPos + 2 + endOfInterface + 1, idLength), nullptr, 16);
-        dataBytes = line.substr(startOfData + 1);
-        if (dataBytes[0] != '\0') {
-            for (int i = 0; i < dataBytes.length(); i += 2) {
-                current->data[i/2] = (convertHextoBinary(dataBytes[i]) << 4) + (convertHextoBinary(dataBytes[i+1]));
-            }
-            current->hasData = 1;
-            current->numBits = line.substr(startOfData + 1).size() * 4;
-        } else {
-            current->hasData = 0;
-            current->numBits = 0;
-        }
-        current->next = new canframe;
-        current = current->next;
-    }
-    
-    dumpLog.close();
-}
+*/

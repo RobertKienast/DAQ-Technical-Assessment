@@ -1,7 +1,7 @@
 lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_startup_exception_registry.cpp.o: \
- /home/rob/red/DAQ-Technical-Assessment/firmware/tests/lib/Catch2/src/catch2/internal/catch_startup_exception_registry.cpp \
+ /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/lib/Catch2/src/catch2/internal/catch_startup_exception_registry.cpp \
  /usr/include/stdc-predef.h \
- /home/rob/red/DAQ-Technical-Assessment/firmware/tests/lib/Catch2/src/catch2/../catch2/internal/catch_startup_exception_registry.hpp \
+ /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/lib/Catch2/src/catch2/../catch2/internal/catch_startup_exception_registry.hpp \
  /usr/include/c++/13/vector /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
@@ -55,6 +55,6 @@ lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_startup_exception_reg
  /usr/include/c++/13/exception /usr/include/c++/13/bits/exception_ptr.h \
  /usr/include/c++/13/bits/cxxabi_init_exception.h \
  /usr/include/c++/13/typeinfo /usr/include/c++/13/bits/nested_exception.h \
- /home/rob/red/DAQ-Technical-Assessment/firmware/tests/lib/Catch2/src/catch2/../catch2/internal/catch_compiler_capabilities.hpp \
- /home/rob/red/DAQ-Technical-Assessment/firmware/tests/lib/Catch2/src/catch2/../catch2/internal/catch_platform.hpp \
- /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build/lib/Catch2/generated-includes/catch2/catch_user_config.hpp
+ /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/lib/Catch2/src/catch2/../catch2/internal/catch_compiler_capabilities.hpp \
+ /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/lib/Catch2/src/catch2/../catch2/internal/catch_platform.hpp \
+ /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build/lib/Catch2/generated-includes/catch2/catch_user_config.hpp

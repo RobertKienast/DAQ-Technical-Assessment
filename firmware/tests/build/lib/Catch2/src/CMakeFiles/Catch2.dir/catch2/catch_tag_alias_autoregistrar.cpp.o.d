@@ -1,10 +1,10 @@
 lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_tag_alias_autoregistrar.cpp.o: \
- /home/rob/red/DAQ-Technical-Assessment/firmware/tests/lib/Catch2/src/catch2/catch_tag_alias_autoregistrar.cpp \
+ /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/lib/Catch2/src/catch2/catch_tag_alias_autoregistrar.cpp \
  /usr/include/stdc-predef.h \
- /home/rob/red/DAQ-Technical-Assessment/firmware/tests/lib/Catch2/src/catch2/../catch2/catch_tag_alias_autoregistrar.hpp \
- /home/rob/red/DAQ-Technical-Assessment/firmware/tests/lib/Catch2/src/catch2/../catch2/internal/catch_compiler_capabilities.hpp \
- /home/rob/red/DAQ-Technical-Assessment/firmware/tests/lib/Catch2/src/catch2/../catch2/internal/catch_platform.hpp \
- /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build/lib/Catch2/generated-includes/catch2/catch_user_config.hpp \
+ /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/lib/Catch2/src/catch2/../catch2/catch_tag_alias_autoregistrar.hpp \
+ /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/lib/Catch2/src/catch2/../catch2/internal/catch_compiler_capabilities.hpp \
+ /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/lib/Catch2/src/catch2/../catch2/internal/catch_platform.hpp \
+ /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build/lib/Catch2/generated-includes/catch2/catch_user_config.hpp \
  /usr/include/c++/13/cstddef \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
@@ -18,9 +18,9 @@ lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_tag_alias_autoregistrar.cpp.o:
  /usr/include/x86_64-linux-gnu/c++/13/bits/cpu_defines.h \
  /usr/include/c++/13/pstl/pstl_config.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
- /home/rob/red/DAQ-Technical-Assessment/firmware/tests/lib/Catch2/src/catch2/../catch2/internal/catch_unique_name.hpp \
- /home/rob/red/DAQ-Technical-Assessment/firmware/tests/lib/Catch2/src/catch2/../catch2/internal/catch_config_counter.hpp \
- /home/rob/red/DAQ-Technical-Assessment/firmware/tests/lib/Catch2/src/catch2/../catch2/internal/catch_source_line_info.hpp \
+ /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/lib/Catch2/src/catch2/../catch2/internal/catch_unique_name.hpp \
+ /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/lib/Catch2/src/catch2/../catch2/internal/catch_config_counter.hpp \
+ /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/lib/Catch2/src/catch2/../catch2/internal/catch_source_line_info.hpp \
  /usr/include/c++/13/iosfwd /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/c++/13/bits/stringfwd.h \
  /usr/include/c++/13/bits/memoryfwd.h /usr/include/c++/13/bits/postypes.h \
@@ -37,11 +37,11 @@ lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_tag_alias_autoregistrar.cpp.o:
  /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
- /home/rob/red/DAQ-Technical-Assessment/firmware/tests/lib/Catch2/src/catch2/../catch2/interfaces/catch_interfaces_registry_hub.hpp \
- /home/rob/red/DAQ-Technical-Assessment/firmware/tests/lib/Catch2/src/catch2/../catch2/internal/catch_unique_ptr.hpp \
+ /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/lib/Catch2/src/catch2/../catch2/interfaces/catch_interfaces_registry_hub.hpp \
+ /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/lib/Catch2/src/catch2/../catch2/internal/catch_unique_ptr.hpp \
  /usr/include/c++/13/cassert /usr/include/assert.h \
  /usr/include/c++/13/type_traits \
- /home/rob/red/DAQ-Technical-Assessment/firmware/tests/lib/Catch2/src/catch2/../catch2/internal/catch_move_and_forward.hpp \
+ /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/lib/Catch2/src/catch2/../catch2/internal/catch_move_and_forward.hpp \
  /usr/include/c++/13/string /usr/include/c++/13/bits/char_traits.h \
  /usr/include/c++/13/bits/allocator.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++allocator.h \

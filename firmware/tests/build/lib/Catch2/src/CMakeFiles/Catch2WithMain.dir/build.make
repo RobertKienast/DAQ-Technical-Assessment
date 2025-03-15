@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/rob/red/DAQ-Technical-Assessment/firmware/tests
+CMAKE_SOURCE_DIR = /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build
+CMAKE_BINARY_DIR = /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build
 
 # Include any dependencies generated for this target.
 include lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/depend.make
@@ -70,18 +70,18 @@ include lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/progress.make
 include lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/flags.make
 
 lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/catch2/internal/catch_main.cpp.o: lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/flags.make
-lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/catch2/internal/catch_main.cpp.o: /home/rob/red/DAQ-Technical-Assessment/firmware/tests/lib/Catch2/src/catch2/internal/catch_main.cpp
+lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/catch2/internal/catch_main.cpp.o: /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/lib/Catch2/src/catch2/internal/catch_main.cpp
 lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/catch2/internal/catch_main.cpp.o: lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/rob/red/DAQ-Technical-Assessment/firmware/tests/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/catch2/internal/catch_main.cpp.o"
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build/lib/Catch2/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/catch2/internal/catch_main.cpp.o -MF CMakeFiles/Catch2WithMain.dir/catch2/internal/catch_main.cpp.o.d -o CMakeFiles/Catch2WithMain.dir/catch2/internal/catch_main.cpp.o -c /home/rob/red/DAQ-Technical-Assessment/firmware/tests/lib/Catch2/src/catch2/internal/catch_main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/catch2/internal/catch_main.cpp.o"
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build/lib/Catch2/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/catch2/internal/catch_main.cpp.o -MF CMakeFiles/Catch2WithMain.dir/catch2/internal/catch_main.cpp.o.d -o CMakeFiles/Catch2WithMain.dir/catch2/internal/catch_main.cpp.o -c /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/lib/Catch2/src/catch2/internal/catch_main.cpp
 
 lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/catch2/internal/catch_main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Catch2WithMain.dir/catch2/internal/catch_main.cpp.i"
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build/lib/Catch2/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rob/red/DAQ-Technical-Assessment/firmware/tests/lib/Catch2/src/catch2/internal/catch_main.cpp > CMakeFiles/Catch2WithMain.dir/catch2/internal/catch_main.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build/lib/Catch2/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/lib/Catch2/src/catch2/internal/catch_main.cpp > CMakeFiles/Catch2WithMain.dir/catch2/internal/catch_main.cpp.i
 
 lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/catch2/internal/catch_main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Catch2WithMain.dir/catch2/internal/catch_main.cpp.s"
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build/lib/Catch2/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rob/red/DAQ-Technical-Assessment/firmware/tests/lib/Catch2/src/catch2/internal/catch_main.cpp -o CMakeFiles/Catch2WithMain.dir/catch2/internal/catch_main.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build/lib/Catch2/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/lib/Catch2/src/catch2/internal/catch_main.cpp -o CMakeFiles/Catch2WithMain.dir/catch2/internal/catch_main.cpp.s
 
 # Object files for target Catch2WithMain
 Catch2WithMain_OBJECTS = \
@@ -93,19 +93,19 @@ Catch2WithMain_EXTERNAL_OBJECTS =
 lib/Catch2/src/libCatch2Main.a: lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/catch2/internal/catch_main.cpp.o
 lib/Catch2/src/libCatch2Main.a: lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/build.make
 lib/Catch2/src/libCatch2Main.a: lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/rob/red/DAQ-Technical-Assessment/firmware/tests/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libCatch2Main.a"
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build/lib/Catch2/src && $(CMAKE_COMMAND) -P CMakeFiles/Catch2WithMain.dir/cmake_clean_target.cmake
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build/lib/Catch2/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Catch2WithMain.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libCatch2Main.a"
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build/lib/Catch2/src && $(CMAKE_COMMAND) -P CMakeFiles/Catch2WithMain.dir/cmake_clean_target.cmake
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build/lib/Catch2/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Catch2WithMain.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/build: lib/Catch2/src/libCatch2Main.a
 .PHONY : lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/build
 
 lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/clean:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build/lib/Catch2/src && $(CMAKE_COMMAND) -P CMakeFiles/Catch2WithMain.dir/cmake_clean.cmake
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build/lib/Catch2/src && $(CMAKE_COMMAND) -P CMakeFiles/Catch2WithMain.dir/cmake_clean.cmake
 .PHONY : lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/clean
 
 lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/depend:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/rob/red/DAQ-Technical-Assessment/firmware/tests /home/rob/red/DAQ-Technical-Assessment/firmware/tests/lib/Catch2/src /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build/lib/Catch2/src /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build/lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/lib/Catch2/src /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build/lib/Catch2/src /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build/lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/depend
 

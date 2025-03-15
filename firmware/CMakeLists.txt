@@ -6,6 +6,7 @@ project(firmware)
 find_package(LibXml2 REQUIRED)
 
 add_subdirectory(solution)
+add_subdirectory(tests)
 add_subdirectory(modules/dbcppp)
 
 

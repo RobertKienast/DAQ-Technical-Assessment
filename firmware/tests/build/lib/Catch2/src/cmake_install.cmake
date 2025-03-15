@@ -1,4 +1,4 @@
-# Install script for directory: /home/rob/red/DAQ-Technical-Assessment/firmware/tests/lib/Catch2/src
+# Install script for directory: /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/lib/Catch2/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

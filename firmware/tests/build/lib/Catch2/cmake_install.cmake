@@ -1,4 +1,4 @@
-# Install script for directory: /home/rob/red/DAQ-Technical-Assessment/firmware/tests/lib/Catch2
+# Install script for directory: /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/lib/Catch2
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,6 +44,6 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/rob/red/DAQ-Technical-Assessment/firmware/tests/build/lib/Catch2/src/cmake_install.cmake")
+  include("/home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build/lib/Catch2/src/cmake_install.cmake")
 endif()
 

@@ -57,33 +57,13 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/rob/red/DAQ-Technical-Assessment/firmware/tests
+CMAKE_SOURCE_DIR = /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build
+CMAKE_BINARY_DIR = /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build
 
 #=============================================================================
 # Targets provided globally by CMake.
-
-# Special rule for the target package
-package: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool..."
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && /usr/bin/cpack --config ./CPackConfig.cmake
-.PHONY : package
-
-# Special rule for the target package
-package/fast: package
-.PHONY : package/fast
-
-# Special rule for the target package_source
-package_source:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool for source..."
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && /usr/bin/cpack --config ./CPackSourceConfig.cmake /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build/CPackSourceConfig.cmake
-.PHONY : package_source
-
-# Special rule for the target package_source
-package_source/fast: package_source
-.PHONY : package_source/fast
 
 # Special rule for the target edit_cache
 edit_cache:
@@ -105,61 +85,16 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-.PHONY : list_install_components/fast
-
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
-
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
-
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
-
 # The main all target
 all: cmake_check_build_system
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build/CMakeFiles /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build/lib/Catch2/src//CMakeFiles/progress.marks
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lib/Catch2/src/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build/CMakeFiles 0
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build/CMakeFiles /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build/lib/Catch2/src//CMakeFiles/progress.marks
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lib/Catch2/src/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lib/Catch2/src/clean
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lib/Catch2/src/clean
 .PHONY : clean
 
 # The main clean target
@@ -168,22 +103,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lib/Catch2/src/preinstall
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lib/Catch2/src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lib/Catch2/src/preinstall
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lib/Catch2/src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 lib/Catch2/src/CMakeFiles/Catch2.dir/rule:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lib/Catch2/src/CMakeFiles/Catch2.dir/rule
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lib/Catch2/src/CMakeFiles/Catch2.dir/rule
 .PHONY : lib/Catch2/src/CMakeFiles/Catch2.dir/rule
 
 # Convenience name for target.
@@ -192,12 +127,12 @@ Catch2: lib/Catch2/src/CMakeFiles/Catch2.dir/rule
 
 # fast build rule for target.
 Catch2/fast:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/build
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/build
 .PHONY : Catch2/fast
 
 # Convenience name for target.
 lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/rule:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/rule
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/rule
 .PHONY : lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/rule
 
 # Convenience name for target.
@@ -206,7 +141,7 @@ Catch2WithMain: lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/rule
 
 # fast build rule for target.
 Catch2WithMain/fast:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/build.make lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/build
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/build.make lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/build
 .PHONY : Catch2WithMain/fast
 
 catch2/benchmark/catch_chronometer.o: catch2/benchmark/catch_chronometer.cpp.o
@@ -214,7 +149,7 @@ catch2/benchmark/catch_chronometer.o: catch2/benchmark/catch_chronometer.cpp.o
 
 # target to build an object file
 catch2/benchmark/catch_chronometer.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/benchmark/catch_chronometer.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/benchmark/catch_chronometer.cpp.o
 .PHONY : catch2/benchmark/catch_chronometer.cpp.o
 
 catch2/benchmark/catch_chronometer.i: catch2/benchmark/catch_chronometer.cpp.i
@@ -222,7 +157,7 @@ catch2/benchmark/catch_chronometer.i: catch2/benchmark/catch_chronometer.cpp.i
 
 # target to preprocess a source file
 catch2/benchmark/catch_chronometer.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/benchmark/catch_chronometer.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/benchmark/catch_chronometer.cpp.i
 .PHONY : catch2/benchmark/catch_chronometer.cpp.i
 
 catch2/benchmark/catch_chronometer.s: catch2/benchmark/catch_chronometer.cpp.s
@@ -230,7 +165,7 @@ catch2/benchmark/catch_chronometer.s: catch2/benchmark/catch_chronometer.cpp.s
 
 # target to generate assembly for a file
 catch2/benchmark/catch_chronometer.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/benchmark/catch_chronometer.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/benchmark/catch_chronometer.cpp.s
 .PHONY : catch2/benchmark/catch_chronometer.cpp.s
 
 catch2/benchmark/detail/catch_analyse.o: catch2/benchmark/detail/catch_analyse.cpp.o
@@ -238,7 +173,7 @@ catch2/benchmark/detail/catch_analyse.o: catch2/benchmark/detail/catch_analyse.c
 
 # target to build an object file
 catch2/benchmark/detail/catch_analyse.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/benchmark/detail/catch_analyse.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/benchmark/detail/catch_analyse.cpp.o
 .PHONY : catch2/benchmark/detail/catch_analyse.cpp.o
 
 catch2/benchmark/detail/catch_analyse.i: catch2/benchmark/detail/catch_analyse.cpp.i
@@ -246,7 +181,7 @@ catch2/benchmark/detail/catch_analyse.i: catch2/benchmark/detail/catch_analyse.c
 
 # target to preprocess a source file
 catch2/benchmark/detail/catch_analyse.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/benchmark/detail/catch_analyse.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/benchmark/detail/catch_analyse.cpp.i
 .PHONY : catch2/benchmark/detail/catch_analyse.cpp.i
 
 catch2/benchmark/detail/catch_analyse.s: catch2/benchmark/detail/catch_analyse.cpp.s
@@ -254,7 +189,7 @@ catch2/benchmark/detail/catch_analyse.s: catch2/benchmark/detail/catch_analyse.c
 
 # target to generate assembly for a file
 catch2/benchmark/detail/catch_analyse.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/benchmark/detail/catch_analyse.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/benchmark/detail/catch_analyse.cpp.s
 .PHONY : catch2/benchmark/detail/catch_analyse.cpp.s
 
 catch2/benchmark/detail/catch_benchmark_function.o: catch2/benchmark/detail/catch_benchmark_function.cpp.o
@@ -262,7 +197,7 @@ catch2/benchmark/detail/catch_benchmark_function.o: catch2/benchmark/detail/catc
 
 # target to build an object file
 catch2/benchmark/detail/catch_benchmark_function.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/benchmark/detail/catch_benchmark_function.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/benchmark/detail/catch_benchmark_function.cpp.o
 .PHONY : catch2/benchmark/detail/catch_benchmark_function.cpp.o
 
 catch2/benchmark/detail/catch_benchmark_function.i: catch2/benchmark/detail/catch_benchmark_function.cpp.i
@@ -270,7 +205,7 @@ catch2/benchmark/detail/catch_benchmark_function.i: catch2/benchmark/detail/catc
 
 # target to preprocess a source file
 catch2/benchmark/detail/catch_benchmark_function.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/benchmark/detail/catch_benchmark_function.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/benchmark/detail/catch_benchmark_function.cpp.i
 .PHONY : catch2/benchmark/detail/catch_benchmark_function.cpp.i
 
 catch2/benchmark/detail/catch_benchmark_function.s: catch2/benchmark/detail/catch_benchmark_function.cpp.s
@@ -278,7 +213,7 @@ catch2/benchmark/detail/catch_benchmark_function.s: catch2/benchmark/detail/catc
 
 # target to generate assembly for a file
 catch2/benchmark/detail/catch_benchmark_function.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/benchmark/detail/catch_benchmark_function.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/benchmark/detail/catch_benchmark_function.cpp.s
 .PHONY : catch2/benchmark/detail/catch_benchmark_function.cpp.s
 
 catch2/benchmark/detail/catch_run_for_at_least.o: catch2/benchmark/detail/catch_run_for_at_least.cpp.o
@@ -286,7 +221,7 @@ catch2/benchmark/detail/catch_run_for_at_least.o: catch2/benchmark/detail/catch_
 
 # target to build an object file
 catch2/benchmark/detail/catch_run_for_at_least.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/benchmark/detail/catch_run_for_at_least.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/benchmark/detail/catch_run_for_at_least.cpp.o
 .PHONY : catch2/benchmark/detail/catch_run_for_at_least.cpp.o
 
 catch2/benchmark/detail/catch_run_for_at_least.i: catch2/benchmark/detail/catch_run_for_at_least.cpp.i
@@ -294,7 +229,7 @@ catch2/benchmark/detail/catch_run_for_at_least.i: catch2/benchmark/detail/catch_
 
 # target to preprocess a source file
 catch2/benchmark/detail/catch_run_for_at_least.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/benchmark/detail/catch_run_for_at_least.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/benchmark/detail/catch_run_for_at_least.cpp.i
 .PHONY : catch2/benchmark/detail/catch_run_for_at_least.cpp.i
 
 catch2/benchmark/detail/catch_run_for_at_least.s: catch2/benchmark/detail/catch_run_for_at_least.cpp.s
@@ -302,7 +237,7 @@ catch2/benchmark/detail/catch_run_for_at_least.s: catch2/benchmark/detail/catch_
 
 # target to generate assembly for a file
 catch2/benchmark/detail/catch_run_for_at_least.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/benchmark/detail/catch_run_for_at_least.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/benchmark/detail/catch_run_for_at_least.cpp.s
 .PHONY : catch2/benchmark/detail/catch_run_for_at_least.cpp.s
 
 catch2/benchmark/detail/catch_stats.o: catch2/benchmark/detail/catch_stats.cpp.o
@@ -310,7 +245,7 @@ catch2/benchmark/detail/catch_stats.o: catch2/benchmark/detail/catch_stats.cpp.o
 
 # target to build an object file
 catch2/benchmark/detail/catch_stats.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/benchmark/detail/catch_stats.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/benchmark/detail/catch_stats.cpp.o
 .PHONY : catch2/benchmark/detail/catch_stats.cpp.o
 
 catch2/benchmark/detail/catch_stats.i: catch2/benchmark/detail/catch_stats.cpp.i
@@ -318,7 +253,7 @@ catch2/benchmark/detail/catch_stats.i: catch2/benchmark/detail/catch_stats.cpp.i
 
 # target to preprocess a source file
 catch2/benchmark/detail/catch_stats.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/benchmark/detail/catch_stats.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/benchmark/detail/catch_stats.cpp.i
 .PHONY : catch2/benchmark/detail/catch_stats.cpp.i
 
 catch2/benchmark/detail/catch_stats.s: catch2/benchmark/detail/catch_stats.cpp.s
@@ -326,7 +261,7 @@ catch2/benchmark/detail/catch_stats.s: catch2/benchmark/detail/catch_stats.cpp.s
 
 # target to generate assembly for a file
 catch2/benchmark/detail/catch_stats.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/benchmark/detail/catch_stats.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/benchmark/detail/catch_stats.cpp.s
 .PHONY : catch2/benchmark/detail/catch_stats.cpp.s
 
 catch2/catch_approx.o: catch2/catch_approx.cpp.o
@@ -334,7 +269,7 @@ catch2/catch_approx.o: catch2/catch_approx.cpp.o
 
 # target to build an object file
 catch2/catch_approx.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_approx.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_approx.cpp.o
 .PHONY : catch2/catch_approx.cpp.o
 
 catch2/catch_approx.i: catch2/catch_approx.cpp.i
@@ -342,7 +277,7 @@ catch2/catch_approx.i: catch2/catch_approx.cpp.i
 
 # target to preprocess a source file
 catch2/catch_approx.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_approx.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_approx.cpp.i
 .PHONY : catch2/catch_approx.cpp.i
 
 catch2/catch_approx.s: catch2/catch_approx.cpp.s
@@ -350,7 +285,7 @@ catch2/catch_approx.s: catch2/catch_approx.cpp.s
 
 # target to generate assembly for a file
 catch2/catch_approx.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_approx.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_approx.cpp.s
 .PHONY : catch2/catch_approx.cpp.s
 
 catch2/catch_assertion_result.o: catch2/catch_assertion_result.cpp.o
@@ -358,7 +293,7 @@ catch2/catch_assertion_result.o: catch2/catch_assertion_result.cpp.o
 
 # target to build an object file
 catch2/catch_assertion_result.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_assertion_result.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_assertion_result.cpp.o
 .PHONY : catch2/catch_assertion_result.cpp.o
 
 catch2/catch_assertion_result.i: catch2/catch_assertion_result.cpp.i
@@ -366,7 +301,7 @@ catch2/catch_assertion_result.i: catch2/catch_assertion_result.cpp.i
 
 # target to preprocess a source file
 catch2/catch_assertion_result.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_assertion_result.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_assertion_result.cpp.i
 .PHONY : catch2/catch_assertion_result.cpp.i
 
 catch2/catch_assertion_result.s: catch2/catch_assertion_result.cpp.s
@@ -374,7 +309,7 @@ catch2/catch_assertion_result.s: catch2/catch_assertion_result.cpp.s
 
 # target to generate assembly for a file
 catch2/catch_assertion_result.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_assertion_result.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_assertion_result.cpp.s
 .PHONY : catch2/catch_assertion_result.cpp.s
 
 catch2/catch_config.o: catch2/catch_config.cpp.o
@@ -382,7 +317,7 @@ catch2/catch_config.o: catch2/catch_config.cpp.o
 
 # target to build an object file
 catch2/catch_config.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_config.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_config.cpp.o
 .PHONY : catch2/catch_config.cpp.o
 
 catch2/catch_config.i: catch2/catch_config.cpp.i
@@ -390,7 +325,7 @@ catch2/catch_config.i: catch2/catch_config.cpp.i
 
 # target to preprocess a source file
 catch2/catch_config.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_config.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_config.cpp.i
 .PHONY : catch2/catch_config.cpp.i
 
 catch2/catch_config.s: catch2/catch_config.cpp.s
@@ -398,7 +333,7 @@ catch2/catch_config.s: catch2/catch_config.cpp.s
 
 # target to generate assembly for a file
 catch2/catch_config.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_config.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_config.cpp.s
 .PHONY : catch2/catch_config.cpp.s
 
 catch2/catch_get_random_seed.o: catch2/catch_get_random_seed.cpp.o
@@ -406,7 +341,7 @@ catch2/catch_get_random_seed.o: catch2/catch_get_random_seed.cpp.o
 
 # target to build an object file
 catch2/catch_get_random_seed.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_get_random_seed.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_get_random_seed.cpp.o
 .PHONY : catch2/catch_get_random_seed.cpp.o
 
 catch2/catch_get_random_seed.i: catch2/catch_get_random_seed.cpp.i
@@ -414,7 +349,7 @@ catch2/catch_get_random_seed.i: catch2/catch_get_random_seed.cpp.i
 
 # target to preprocess a source file
 catch2/catch_get_random_seed.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_get_random_seed.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_get_random_seed.cpp.i
 .PHONY : catch2/catch_get_random_seed.cpp.i
 
 catch2/catch_get_random_seed.s: catch2/catch_get_random_seed.cpp.s
@@ -422,7 +357,7 @@ catch2/catch_get_random_seed.s: catch2/catch_get_random_seed.cpp.s
 
 # target to generate assembly for a file
 catch2/catch_get_random_seed.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_get_random_seed.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_get_random_seed.cpp.s
 .PHONY : catch2/catch_get_random_seed.cpp.s
 
 catch2/catch_message.o: catch2/catch_message.cpp.o
@@ -430,7 +365,7 @@ catch2/catch_message.o: catch2/catch_message.cpp.o
 
 # target to build an object file
 catch2/catch_message.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_message.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_message.cpp.o
 .PHONY : catch2/catch_message.cpp.o
 
 catch2/catch_message.i: catch2/catch_message.cpp.i
@@ -438,7 +373,7 @@ catch2/catch_message.i: catch2/catch_message.cpp.i
 
 # target to preprocess a source file
 catch2/catch_message.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_message.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_message.cpp.i
 .PHONY : catch2/catch_message.cpp.i
 
 catch2/catch_message.s: catch2/catch_message.cpp.s
@@ -446,7 +381,7 @@ catch2/catch_message.s: catch2/catch_message.cpp.s
 
 # target to generate assembly for a file
 catch2/catch_message.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_message.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_message.cpp.s
 .PHONY : catch2/catch_message.cpp.s
 
 catch2/catch_registry_hub.o: catch2/catch_registry_hub.cpp.o
@@ -454,7 +389,7 @@ catch2/catch_registry_hub.o: catch2/catch_registry_hub.cpp.o
 
 # target to build an object file
 catch2/catch_registry_hub.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_registry_hub.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_registry_hub.cpp.o
 .PHONY : catch2/catch_registry_hub.cpp.o
 
 catch2/catch_registry_hub.i: catch2/catch_registry_hub.cpp.i
@@ -462,7 +397,7 @@ catch2/catch_registry_hub.i: catch2/catch_registry_hub.cpp.i
 
 # target to preprocess a source file
 catch2/catch_registry_hub.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_registry_hub.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_registry_hub.cpp.i
 .PHONY : catch2/catch_registry_hub.cpp.i
 
 catch2/catch_registry_hub.s: catch2/catch_registry_hub.cpp.s
@@ -470,7 +405,7 @@ catch2/catch_registry_hub.s: catch2/catch_registry_hub.cpp.s
 
 # target to generate assembly for a file
 catch2/catch_registry_hub.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_registry_hub.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_registry_hub.cpp.s
 .PHONY : catch2/catch_registry_hub.cpp.s
 
 catch2/catch_session.o: catch2/catch_session.cpp.o
@@ -478,7 +413,7 @@ catch2/catch_session.o: catch2/catch_session.cpp.o
 
 # target to build an object file
 catch2/catch_session.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_session.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_session.cpp.o
 .PHONY : catch2/catch_session.cpp.o
 
 catch2/catch_session.i: catch2/catch_session.cpp.i
@@ -486,7 +421,7 @@ catch2/catch_session.i: catch2/catch_session.cpp.i
 
 # target to preprocess a source file
 catch2/catch_session.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_session.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_session.cpp.i
 .PHONY : catch2/catch_session.cpp.i
 
 catch2/catch_session.s: catch2/catch_session.cpp.s
@@ -494,7 +429,7 @@ catch2/catch_session.s: catch2/catch_session.cpp.s
 
 # target to generate assembly for a file
 catch2/catch_session.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_session.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_session.cpp.s
 .PHONY : catch2/catch_session.cpp.s
 
 catch2/catch_tag_alias_autoregistrar.o: catch2/catch_tag_alias_autoregistrar.cpp.o
@@ -502,7 +437,7 @@ catch2/catch_tag_alias_autoregistrar.o: catch2/catch_tag_alias_autoregistrar.cpp
 
 # target to build an object file
 catch2/catch_tag_alias_autoregistrar.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_tag_alias_autoregistrar.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_tag_alias_autoregistrar.cpp.o
 .PHONY : catch2/catch_tag_alias_autoregistrar.cpp.o
 
 catch2/catch_tag_alias_autoregistrar.i: catch2/catch_tag_alias_autoregistrar.cpp.i
@@ -510,7 +445,7 @@ catch2/catch_tag_alias_autoregistrar.i: catch2/catch_tag_alias_autoregistrar.cpp
 
 # target to preprocess a source file
 catch2/catch_tag_alias_autoregistrar.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_tag_alias_autoregistrar.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_tag_alias_autoregistrar.cpp.i
 .PHONY : catch2/catch_tag_alias_autoregistrar.cpp.i
 
 catch2/catch_tag_alias_autoregistrar.s: catch2/catch_tag_alias_autoregistrar.cpp.s
@@ -518,7 +453,7 @@ catch2/catch_tag_alias_autoregistrar.s: catch2/catch_tag_alias_autoregistrar.cpp
 
 # target to generate assembly for a file
 catch2/catch_tag_alias_autoregistrar.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_tag_alias_autoregistrar.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_tag_alias_autoregistrar.cpp.s
 .PHONY : catch2/catch_tag_alias_autoregistrar.cpp.s
 
 catch2/catch_test_case_info.o: catch2/catch_test_case_info.cpp.o
@@ -526,7 +461,7 @@ catch2/catch_test_case_info.o: catch2/catch_test_case_info.cpp.o
 
 # target to build an object file
 catch2/catch_test_case_info.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_test_case_info.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_test_case_info.cpp.o
 .PHONY : catch2/catch_test_case_info.cpp.o
 
 catch2/catch_test_case_info.i: catch2/catch_test_case_info.cpp.i
@@ -534,7 +469,7 @@ catch2/catch_test_case_info.i: catch2/catch_test_case_info.cpp.i
 
 # target to preprocess a source file
 catch2/catch_test_case_info.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_test_case_info.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_test_case_info.cpp.i
 .PHONY : catch2/catch_test_case_info.cpp.i
 
 catch2/catch_test_case_info.s: catch2/catch_test_case_info.cpp.s
@@ -542,7 +477,7 @@ catch2/catch_test_case_info.s: catch2/catch_test_case_info.cpp.s
 
 # target to generate assembly for a file
 catch2/catch_test_case_info.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_test_case_info.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_test_case_info.cpp.s
 .PHONY : catch2/catch_test_case_info.cpp.s
 
 catch2/catch_test_spec.o: catch2/catch_test_spec.cpp.o
@@ -550,7 +485,7 @@ catch2/catch_test_spec.o: catch2/catch_test_spec.cpp.o
 
 # target to build an object file
 catch2/catch_test_spec.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_test_spec.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_test_spec.cpp.o
 .PHONY : catch2/catch_test_spec.cpp.o
 
 catch2/catch_test_spec.i: catch2/catch_test_spec.cpp.i
@@ -558,7 +493,7 @@ catch2/catch_test_spec.i: catch2/catch_test_spec.cpp.i
 
 # target to preprocess a source file
 catch2/catch_test_spec.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_test_spec.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_test_spec.cpp.i
 .PHONY : catch2/catch_test_spec.cpp.i
 
 catch2/catch_test_spec.s: catch2/catch_test_spec.cpp.s
@@ -566,7 +501,7 @@ catch2/catch_test_spec.s: catch2/catch_test_spec.cpp.s
 
 # target to generate assembly for a file
 catch2/catch_test_spec.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_test_spec.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_test_spec.cpp.s
 .PHONY : catch2/catch_test_spec.cpp.s
 
 catch2/catch_timer.o: catch2/catch_timer.cpp.o
@@ -574,7 +509,7 @@ catch2/catch_timer.o: catch2/catch_timer.cpp.o
 
 # target to build an object file
 catch2/catch_timer.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_timer.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_timer.cpp.o
 .PHONY : catch2/catch_timer.cpp.o
 
 catch2/catch_timer.i: catch2/catch_timer.cpp.i
@@ -582,7 +517,7 @@ catch2/catch_timer.i: catch2/catch_timer.cpp.i
 
 # target to preprocess a source file
 catch2/catch_timer.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_timer.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_timer.cpp.i
 .PHONY : catch2/catch_timer.cpp.i
 
 catch2/catch_timer.s: catch2/catch_timer.cpp.s
@@ -590,7 +525,7 @@ catch2/catch_timer.s: catch2/catch_timer.cpp.s
 
 # target to generate assembly for a file
 catch2/catch_timer.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_timer.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_timer.cpp.s
 .PHONY : catch2/catch_timer.cpp.s
 
 catch2/catch_tostring.o: catch2/catch_tostring.cpp.o
@@ -598,7 +533,7 @@ catch2/catch_tostring.o: catch2/catch_tostring.cpp.o
 
 # target to build an object file
 catch2/catch_tostring.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_tostring.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_tostring.cpp.o
 .PHONY : catch2/catch_tostring.cpp.o
 
 catch2/catch_tostring.i: catch2/catch_tostring.cpp.i
@@ -606,7 +541,7 @@ catch2/catch_tostring.i: catch2/catch_tostring.cpp.i
 
 # target to preprocess a source file
 catch2/catch_tostring.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_tostring.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_tostring.cpp.i
 .PHONY : catch2/catch_tostring.cpp.i
 
 catch2/catch_tostring.s: catch2/catch_tostring.cpp.s
@@ -614,7 +549,7 @@ catch2/catch_tostring.s: catch2/catch_tostring.cpp.s
 
 # target to generate assembly for a file
 catch2/catch_tostring.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_tostring.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_tostring.cpp.s
 .PHONY : catch2/catch_tostring.cpp.s
 
 catch2/catch_totals.o: catch2/catch_totals.cpp.o
@@ -622,7 +557,7 @@ catch2/catch_totals.o: catch2/catch_totals.cpp.o
 
 # target to build an object file
 catch2/catch_totals.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_totals.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_totals.cpp.o
 .PHONY : catch2/catch_totals.cpp.o
 
 catch2/catch_totals.i: catch2/catch_totals.cpp.i
@@ -630,7 +565,7 @@ catch2/catch_totals.i: catch2/catch_totals.cpp.i
 
 # target to preprocess a source file
 catch2/catch_totals.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_totals.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_totals.cpp.i
 .PHONY : catch2/catch_totals.cpp.i
 
 catch2/catch_totals.s: catch2/catch_totals.cpp.s
@@ -638,7 +573,7 @@ catch2/catch_totals.s: catch2/catch_totals.cpp.s
 
 # target to generate assembly for a file
 catch2/catch_totals.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_totals.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_totals.cpp.s
 .PHONY : catch2/catch_totals.cpp.s
 
 catch2/catch_translate_exception.o: catch2/catch_translate_exception.cpp.o
@@ -646,7 +581,7 @@ catch2/catch_translate_exception.o: catch2/catch_translate_exception.cpp.o
 
 # target to build an object file
 catch2/catch_translate_exception.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_translate_exception.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_translate_exception.cpp.o
 .PHONY : catch2/catch_translate_exception.cpp.o
 
 catch2/catch_translate_exception.i: catch2/catch_translate_exception.cpp.i
@@ -654,7 +589,7 @@ catch2/catch_translate_exception.i: catch2/catch_translate_exception.cpp.i
 
 # target to preprocess a source file
 catch2/catch_translate_exception.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_translate_exception.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_translate_exception.cpp.i
 .PHONY : catch2/catch_translate_exception.cpp.i
 
 catch2/catch_translate_exception.s: catch2/catch_translate_exception.cpp.s
@@ -662,7 +597,7 @@ catch2/catch_translate_exception.s: catch2/catch_translate_exception.cpp.s
 
 # target to generate assembly for a file
 catch2/catch_translate_exception.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_translate_exception.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_translate_exception.cpp.s
 .PHONY : catch2/catch_translate_exception.cpp.s
 
 catch2/catch_version.o: catch2/catch_version.cpp.o
@@ -670,7 +605,7 @@ catch2/catch_version.o: catch2/catch_version.cpp.o
 
 # target to build an object file
 catch2/catch_version.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_version.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_version.cpp.o
 .PHONY : catch2/catch_version.cpp.o
 
 catch2/catch_version.i: catch2/catch_version.cpp.i
@@ -678,7 +613,7 @@ catch2/catch_version.i: catch2/catch_version.cpp.i
 
 # target to preprocess a source file
 catch2/catch_version.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_version.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_version.cpp.i
 .PHONY : catch2/catch_version.cpp.i
 
 catch2/catch_version.s: catch2/catch_version.cpp.s
@@ -686,7 +621,7 @@ catch2/catch_version.s: catch2/catch_version.cpp.s
 
 # target to generate assembly for a file
 catch2/catch_version.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_version.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/catch_version.cpp.s
 .PHONY : catch2/catch_version.cpp.s
 
 catch2/generators/catch_generator_exception.o: catch2/generators/catch_generator_exception.cpp.o
@@ -694,7 +629,7 @@ catch2/generators/catch_generator_exception.o: catch2/generators/catch_generator
 
 # target to build an object file
 catch2/generators/catch_generator_exception.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/generators/catch_generator_exception.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/generators/catch_generator_exception.cpp.o
 .PHONY : catch2/generators/catch_generator_exception.cpp.o
 
 catch2/generators/catch_generator_exception.i: catch2/generators/catch_generator_exception.cpp.i
@@ -702,7 +637,7 @@ catch2/generators/catch_generator_exception.i: catch2/generators/catch_generator
 
 # target to preprocess a source file
 catch2/generators/catch_generator_exception.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/generators/catch_generator_exception.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/generators/catch_generator_exception.cpp.i
 .PHONY : catch2/generators/catch_generator_exception.cpp.i
 
 catch2/generators/catch_generator_exception.s: catch2/generators/catch_generator_exception.cpp.s
@@ -710,7 +645,7 @@ catch2/generators/catch_generator_exception.s: catch2/generators/catch_generator
 
 # target to generate assembly for a file
 catch2/generators/catch_generator_exception.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/generators/catch_generator_exception.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/generators/catch_generator_exception.cpp.s
 .PHONY : catch2/generators/catch_generator_exception.cpp.s
 
 catch2/generators/catch_generators.o: catch2/generators/catch_generators.cpp.o
@@ -718,7 +653,7 @@ catch2/generators/catch_generators.o: catch2/generators/catch_generators.cpp.o
 
 # target to build an object file
 catch2/generators/catch_generators.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/generators/catch_generators.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/generators/catch_generators.cpp.o
 .PHONY : catch2/generators/catch_generators.cpp.o
 
 catch2/generators/catch_generators.i: catch2/generators/catch_generators.cpp.i
@@ -726,7 +661,7 @@ catch2/generators/catch_generators.i: catch2/generators/catch_generators.cpp.i
 
 # target to preprocess a source file
 catch2/generators/catch_generators.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/generators/catch_generators.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/generators/catch_generators.cpp.i
 .PHONY : catch2/generators/catch_generators.cpp.i
 
 catch2/generators/catch_generators.s: catch2/generators/catch_generators.cpp.s
@@ -734,7 +669,7 @@ catch2/generators/catch_generators.s: catch2/generators/catch_generators.cpp.s
 
 # target to generate assembly for a file
 catch2/generators/catch_generators.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/generators/catch_generators.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/generators/catch_generators.cpp.s
 .PHONY : catch2/generators/catch_generators.cpp.s
 
 catch2/generators/catch_generators_random.o: catch2/generators/catch_generators_random.cpp.o
@@ -742,7 +677,7 @@ catch2/generators/catch_generators_random.o: catch2/generators/catch_generators_
 
 # target to build an object file
 catch2/generators/catch_generators_random.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/generators/catch_generators_random.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/generators/catch_generators_random.cpp.o
 .PHONY : catch2/generators/catch_generators_random.cpp.o
 
 catch2/generators/catch_generators_random.i: catch2/generators/catch_generators_random.cpp.i
@@ -750,7 +685,7 @@ catch2/generators/catch_generators_random.i: catch2/generators/catch_generators_
 
 # target to preprocess a source file
 catch2/generators/catch_generators_random.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/generators/catch_generators_random.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/generators/catch_generators_random.cpp.i
 .PHONY : catch2/generators/catch_generators_random.cpp.i
 
 catch2/generators/catch_generators_random.s: catch2/generators/catch_generators_random.cpp.s
@@ -758,7 +693,7 @@ catch2/generators/catch_generators_random.s: catch2/generators/catch_generators_
 
 # target to generate assembly for a file
 catch2/generators/catch_generators_random.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/generators/catch_generators_random.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/generators/catch_generators_random.cpp.s
 .PHONY : catch2/generators/catch_generators_random.cpp.s
 
 catch2/interfaces/catch_interfaces_capture.o: catch2/interfaces/catch_interfaces_capture.cpp.o
@@ -766,7 +701,7 @@ catch2/interfaces/catch_interfaces_capture.o: catch2/interfaces/catch_interfaces
 
 # target to build an object file
 catch2/interfaces/catch_interfaces_capture.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_capture.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_capture.cpp.o
 .PHONY : catch2/interfaces/catch_interfaces_capture.cpp.o
 
 catch2/interfaces/catch_interfaces_capture.i: catch2/interfaces/catch_interfaces_capture.cpp.i
@@ -774,7 +709,7 @@ catch2/interfaces/catch_interfaces_capture.i: catch2/interfaces/catch_interfaces
 
 # target to preprocess a source file
 catch2/interfaces/catch_interfaces_capture.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_capture.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_capture.cpp.i
 .PHONY : catch2/interfaces/catch_interfaces_capture.cpp.i
 
 catch2/interfaces/catch_interfaces_capture.s: catch2/interfaces/catch_interfaces_capture.cpp.s
@@ -782,7 +717,7 @@ catch2/interfaces/catch_interfaces_capture.s: catch2/interfaces/catch_interfaces
 
 # target to generate assembly for a file
 catch2/interfaces/catch_interfaces_capture.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_capture.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_capture.cpp.s
 .PHONY : catch2/interfaces/catch_interfaces_capture.cpp.s
 
 catch2/interfaces/catch_interfaces_config.o: catch2/interfaces/catch_interfaces_config.cpp.o
@@ -790,7 +725,7 @@ catch2/interfaces/catch_interfaces_config.o: catch2/interfaces/catch_interfaces_
 
 # target to build an object file
 catch2/interfaces/catch_interfaces_config.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_config.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_config.cpp.o
 .PHONY : catch2/interfaces/catch_interfaces_config.cpp.o
 
 catch2/interfaces/catch_interfaces_config.i: catch2/interfaces/catch_interfaces_config.cpp.i
@@ -798,7 +733,7 @@ catch2/interfaces/catch_interfaces_config.i: catch2/interfaces/catch_interfaces_
 
 # target to preprocess a source file
 catch2/interfaces/catch_interfaces_config.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_config.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_config.cpp.i
 .PHONY : catch2/interfaces/catch_interfaces_config.cpp.i
 
 catch2/interfaces/catch_interfaces_config.s: catch2/interfaces/catch_interfaces_config.cpp.s
@@ -806,7 +741,7 @@ catch2/interfaces/catch_interfaces_config.s: catch2/interfaces/catch_interfaces_
 
 # target to generate assembly for a file
 catch2/interfaces/catch_interfaces_config.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_config.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_config.cpp.s
 .PHONY : catch2/interfaces/catch_interfaces_config.cpp.s
 
 catch2/interfaces/catch_interfaces_exception.o: catch2/interfaces/catch_interfaces_exception.cpp.o
@@ -814,7 +749,7 @@ catch2/interfaces/catch_interfaces_exception.o: catch2/interfaces/catch_interfac
 
 # target to build an object file
 catch2/interfaces/catch_interfaces_exception.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_exception.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_exception.cpp.o
 .PHONY : catch2/interfaces/catch_interfaces_exception.cpp.o
 
 catch2/interfaces/catch_interfaces_exception.i: catch2/interfaces/catch_interfaces_exception.cpp.i
@@ -822,7 +757,7 @@ catch2/interfaces/catch_interfaces_exception.i: catch2/interfaces/catch_interfac
 
 # target to preprocess a source file
 catch2/interfaces/catch_interfaces_exception.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_exception.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_exception.cpp.i
 .PHONY : catch2/interfaces/catch_interfaces_exception.cpp.i
 
 catch2/interfaces/catch_interfaces_exception.s: catch2/interfaces/catch_interfaces_exception.cpp.s
@@ -830,7 +765,7 @@ catch2/interfaces/catch_interfaces_exception.s: catch2/interfaces/catch_interfac
 
 # target to generate assembly for a file
 catch2/interfaces/catch_interfaces_exception.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_exception.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_exception.cpp.s
 .PHONY : catch2/interfaces/catch_interfaces_exception.cpp.s
 
 catch2/interfaces/catch_interfaces_generatortracker.o: catch2/interfaces/catch_interfaces_generatortracker.cpp.o
@@ -838,7 +773,7 @@ catch2/interfaces/catch_interfaces_generatortracker.o: catch2/interfaces/catch_i
 
 # target to build an object file
 catch2/interfaces/catch_interfaces_generatortracker.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_generatortracker.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_generatortracker.cpp.o
 .PHONY : catch2/interfaces/catch_interfaces_generatortracker.cpp.o
 
 catch2/interfaces/catch_interfaces_generatortracker.i: catch2/interfaces/catch_interfaces_generatortracker.cpp.i
@@ -846,7 +781,7 @@ catch2/interfaces/catch_interfaces_generatortracker.i: catch2/interfaces/catch_i
 
 # target to preprocess a source file
 catch2/interfaces/catch_interfaces_generatortracker.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_generatortracker.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_generatortracker.cpp.i
 .PHONY : catch2/interfaces/catch_interfaces_generatortracker.cpp.i
 
 catch2/interfaces/catch_interfaces_generatortracker.s: catch2/interfaces/catch_interfaces_generatortracker.cpp.s
@@ -854,7 +789,7 @@ catch2/interfaces/catch_interfaces_generatortracker.s: catch2/interfaces/catch_i
 
 # target to generate assembly for a file
 catch2/interfaces/catch_interfaces_generatortracker.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_generatortracker.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_generatortracker.cpp.s
 .PHONY : catch2/interfaces/catch_interfaces_generatortracker.cpp.s
 
 catch2/interfaces/catch_interfaces_registry_hub.o: catch2/interfaces/catch_interfaces_registry_hub.cpp.o
@@ -862,7 +797,7 @@ catch2/interfaces/catch_interfaces_registry_hub.o: catch2/interfaces/catch_inter
 
 # target to build an object file
 catch2/interfaces/catch_interfaces_registry_hub.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_registry_hub.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_registry_hub.cpp.o
 .PHONY : catch2/interfaces/catch_interfaces_registry_hub.cpp.o
 
 catch2/interfaces/catch_interfaces_registry_hub.i: catch2/interfaces/catch_interfaces_registry_hub.cpp.i
@@ -870,7 +805,7 @@ catch2/interfaces/catch_interfaces_registry_hub.i: catch2/interfaces/catch_inter
 
 # target to preprocess a source file
 catch2/interfaces/catch_interfaces_registry_hub.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_registry_hub.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_registry_hub.cpp.i
 .PHONY : catch2/interfaces/catch_interfaces_registry_hub.cpp.i
 
 catch2/interfaces/catch_interfaces_registry_hub.s: catch2/interfaces/catch_interfaces_registry_hub.cpp.s
@@ -878,7 +813,7 @@ catch2/interfaces/catch_interfaces_registry_hub.s: catch2/interfaces/catch_inter
 
 # target to generate assembly for a file
 catch2/interfaces/catch_interfaces_registry_hub.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_registry_hub.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_registry_hub.cpp.s
 .PHONY : catch2/interfaces/catch_interfaces_registry_hub.cpp.s
 
 catch2/interfaces/catch_interfaces_reporter.o: catch2/interfaces/catch_interfaces_reporter.cpp.o
@@ -886,7 +821,7 @@ catch2/interfaces/catch_interfaces_reporter.o: catch2/interfaces/catch_interface
 
 # target to build an object file
 catch2/interfaces/catch_interfaces_reporter.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_reporter.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_reporter.cpp.o
 .PHONY : catch2/interfaces/catch_interfaces_reporter.cpp.o
 
 catch2/interfaces/catch_interfaces_reporter.i: catch2/interfaces/catch_interfaces_reporter.cpp.i
@@ -894,7 +829,7 @@ catch2/interfaces/catch_interfaces_reporter.i: catch2/interfaces/catch_interface
 
 # target to preprocess a source file
 catch2/interfaces/catch_interfaces_reporter.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_reporter.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_reporter.cpp.i
 .PHONY : catch2/interfaces/catch_interfaces_reporter.cpp.i
 
 catch2/interfaces/catch_interfaces_reporter.s: catch2/interfaces/catch_interfaces_reporter.cpp.s
@@ -902,7 +837,7 @@ catch2/interfaces/catch_interfaces_reporter.s: catch2/interfaces/catch_interface
 
 # target to generate assembly for a file
 catch2/interfaces/catch_interfaces_reporter.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_reporter.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_reporter.cpp.s
 .PHONY : catch2/interfaces/catch_interfaces_reporter.cpp.s
 
 catch2/interfaces/catch_interfaces_reporter_factory.o: catch2/interfaces/catch_interfaces_reporter_factory.cpp.o
@@ -910,7 +845,7 @@ catch2/interfaces/catch_interfaces_reporter_factory.o: catch2/interfaces/catch_i
 
 # target to build an object file
 catch2/interfaces/catch_interfaces_reporter_factory.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_reporter_factory.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_reporter_factory.cpp.o
 .PHONY : catch2/interfaces/catch_interfaces_reporter_factory.cpp.o
 
 catch2/interfaces/catch_interfaces_reporter_factory.i: catch2/interfaces/catch_interfaces_reporter_factory.cpp.i
@@ -918,7 +853,7 @@ catch2/interfaces/catch_interfaces_reporter_factory.i: catch2/interfaces/catch_i
 
 # target to preprocess a source file
 catch2/interfaces/catch_interfaces_reporter_factory.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_reporter_factory.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_reporter_factory.cpp.i
 .PHONY : catch2/interfaces/catch_interfaces_reporter_factory.cpp.i
 
 catch2/interfaces/catch_interfaces_reporter_factory.s: catch2/interfaces/catch_interfaces_reporter_factory.cpp.s
@@ -926,7 +861,7 @@ catch2/interfaces/catch_interfaces_reporter_factory.s: catch2/interfaces/catch_i
 
 # target to generate assembly for a file
 catch2/interfaces/catch_interfaces_reporter_factory.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_reporter_factory.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_reporter_factory.cpp.s
 .PHONY : catch2/interfaces/catch_interfaces_reporter_factory.cpp.s
 
 catch2/interfaces/catch_interfaces_testcase.o: catch2/interfaces/catch_interfaces_testcase.cpp.o
@@ -934,7 +869,7 @@ catch2/interfaces/catch_interfaces_testcase.o: catch2/interfaces/catch_interface
 
 # target to build an object file
 catch2/interfaces/catch_interfaces_testcase.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_testcase.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_testcase.cpp.o
 .PHONY : catch2/interfaces/catch_interfaces_testcase.cpp.o
 
 catch2/interfaces/catch_interfaces_testcase.i: catch2/interfaces/catch_interfaces_testcase.cpp.i
@@ -942,7 +877,7 @@ catch2/interfaces/catch_interfaces_testcase.i: catch2/interfaces/catch_interface
 
 # target to preprocess a source file
 catch2/interfaces/catch_interfaces_testcase.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_testcase.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_testcase.cpp.i
 .PHONY : catch2/interfaces/catch_interfaces_testcase.cpp.i
 
 catch2/interfaces/catch_interfaces_testcase.s: catch2/interfaces/catch_interfaces_testcase.cpp.s
@@ -950,7 +885,7 @@ catch2/interfaces/catch_interfaces_testcase.s: catch2/interfaces/catch_interface
 
 # target to generate assembly for a file
 catch2/interfaces/catch_interfaces_testcase.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_testcase.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_testcase.cpp.s
 .PHONY : catch2/interfaces/catch_interfaces_testcase.cpp.s
 
 catch2/internal/catch_assertion_handler.o: catch2/internal/catch_assertion_handler.cpp.o
@@ -958,7 +893,7 @@ catch2/internal/catch_assertion_handler.o: catch2/internal/catch_assertion_handl
 
 # target to build an object file
 catch2/internal/catch_assertion_handler.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_assertion_handler.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_assertion_handler.cpp.o
 .PHONY : catch2/internal/catch_assertion_handler.cpp.o
 
 catch2/internal/catch_assertion_handler.i: catch2/internal/catch_assertion_handler.cpp.i
@@ -966,7 +901,7 @@ catch2/internal/catch_assertion_handler.i: catch2/internal/catch_assertion_handl
 
 # target to preprocess a source file
 catch2/internal/catch_assertion_handler.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_assertion_handler.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_assertion_handler.cpp.i
 .PHONY : catch2/internal/catch_assertion_handler.cpp.i
 
 catch2/internal/catch_assertion_handler.s: catch2/internal/catch_assertion_handler.cpp.s
@@ -974,7 +909,7 @@ catch2/internal/catch_assertion_handler.s: catch2/internal/catch_assertion_handl
 
 # target to generate assembly for a file
 catch2/internal/catch_assertion_handler.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_assertion_handler.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_assertion_handler.cpp.s
 .PHONY : catch2/internal/catch_assertion_handler.cpp.s
 
 catch2/internal/catch_case_insensitive_comparisons.o: catch2/internal/catch_case_insensitive_comparisons.cpp.o
@@ -982,7 +917,7 @@ catch2/internal/catch_case_insensitive_comparisons.o: catch2/internal/catch_case
 
 # target to build an object file
 catch2/internal/catch_case_insensitive_comparisons.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_case_insensitive_comparisons.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_case_insensitive_comparisons.cpp.o
 .PHONY : catch2/internal/catch_case_insensitive_comparisons.cpp.o
 
 catch2/internal/catch_case_insensitive_comparisons.i: catch2/internal/catch_case_insensitive_comparisons.cpp.i
@@ -990,7 +925,7 @@ catch2/internal/catch_case_insensitive_comparisons.i: catch2/internal/catch_case
 
 # target to preprocess a source file
 catch2/internal/catch_case_insensitive_comparisons.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_case_insensitive_comparisons.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_case_insensitive_comparisons.cpp.i
 .PHONY : catch2/internal/catch_case_insensitive_comparisons.cpp.i
 
 catch2/internal/catch_case_insensitive_comparisons.s: catch2/internal/catch_case_insensitive_comparisons.cpp.s
@@ -998,7 +933,7 @@ catch2/internal/catch_case_insensitive_comparisons.s: catch2/internal/catch_case
 
 # target to generate assembly for a file
 catch2/internal/catch_case_insensitive_comparisons.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_case_insensitive_comparisons.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_case_insensitive_comparisons.cpp.s
 .PHONY : catch2/internal/catch_case_insensitive_comparisons.cpp.s
 
 catch2/internal/catch_clara.o: catch2/internal/catch_clara.cpp.o
@@ -1006,7 +941,7 @@ catch2/internal/catch_clara.o: catch2/internal/catch_clara.cpp.o
 
 # target to build an object file
 catch2/internal/catch_clara.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_clara.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_clara.cpp.o
 .PHONY : catch2/internal/catch_clara.cpp.o
 
 catch2/internal/catch_clara.i: catch2/internal/catch_clara.cpp.i
@@ -1014,7 +949,7 @@ catch2/internal/catch_clara.i: catch2/internal/catch_clara.cpp.i
 
 # target to preprocess a source file
 catch2/internal/catch_clara.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_clara.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_clara.cpp.i
 .PHONY : catch2/internal/catch_clara.cpp.i
 
 catch2/internal/catch_clara.s: catch2/internal/catch_clara.cpp.s
@@ -1022,7 +957,7 @@ catch2/internal/catch_clara.s: catch2/internal/catch_clara.cpp.s
 
 # target to generate assembly for a file
 catch2/internal/catch_clara.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_clara.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_clara.cpp.s
 .PHONY : catch2/internal/catch_clara.cpp.s
 
 catch2/internal/catch_commandline.o: catch2/internal/catch_commandline.cpp.o
@@ -1030,7 +965,7 @@ catch2/internal/catch_commandline.o: catch2/internal/catch_commandline.cpp.o
 
 # target to build an object file
 catch2/internal/catch_commandline.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_commandline.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_commandline.cpp.o
 .PHONY : catch2/internal/catch_commandline.cpp.o
 
 catch2/internal/catch_commandline.i: catch2/internal/catch_commandline.cpp.i
@@ -1038,7 +973,7 @@ catch2/internal/catch_commandline.i: catch2/internal/catch_commandline.cpp.i
 
 # target to preprocess a source file
 catch2/internal/catch_commandline.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_commandline.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_commandline.cpp.i
 .PHONY : catch2/internal/catch_commandline.cpp.i
 
 catch2/internal/catch_commandline.s: catch2/internal/catch_commandline.cpp.s
@@ -1046,7 +981,7 @@ catch2/internal/catch_commandline.s: catch2/internal/catch_commandline.cpp.s
 
 # target to generate assembly for a file
 catch2/internal/catch_commandline.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_commandline.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_commandline.cpp.s
 .PHONY : catch2/internal/catch_commandline.cpp.s
 
 catch2/internal/catch_console_colour.o: catch2/internal/catch_console_colour.cpp.o
@@ -1054,7 +989,7 @@ catch2/internal/catch_console_colour.o: catch2/internal/catch_console_colour.cpp
 
 # target to build an object file
 catch2/internal/catch_console_colour.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_console_colour.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_console_colour.cpp.o
 .PHONY : catch2/internal/catch_console_colour.cpp.o
 
 catch2/internal/catch_console_colour.i: catch2/internal/catch_console_colour.cpp.i
@@ -1062,7 +997,7 @@ catch2/internal/catch_console_colour.i: catch2/internal/catch_console_colour.cpp
 
 # target to preprocess a source file
 catch2/internal/catch_console_colour.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_console_colour.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_console_colour.cpp.i
 .PHONY : catch2/internal/catch_console_colour.cpp.i
 
 catch2/internal/catch_console_colour.s: catch2/internal/catch_console_colour.cpp.s
@@ -1070,7 +1005,7 @@ catch2/internal/catch_console_colour.s: catch2/internal/catch_console_colour.cpp
 
 # target to generate assembly for a file
 catch2/internal/catch_console_colour.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_console_colour.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_console_colour.cpp.s
 .PHONY : catch2/internal/catch_console_colour.cpp.s
 
 catch2/internal/catch_context.o: catch2/internal/catch_context.cpp.o
@@ -1078,7 +1013,7 @@ catch2/internal/catch_context.o: catch2/internal/catch_context.cpp.o
 
 # target to build an object file
 catch2/internal/catch_context.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_context.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_context.cpp.o
 .PHONY : catch2/internal/catch_context.cpp.o
 
 catch2/internal/catch_context.i: catch2/internal/catch_context.cpp.i
@@ -1086,7 +1021,7 @@ catch2/internal/catch_context.i: catch2/internal/catch_context.cpp.i
 
 # target to preprocess a source file
 catch2/internal/catch_context.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_context.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_context.cpp.i
 .PHONY : catch2/internal/catch_context.cpp.i
 
 catch2/internal/catch_context.s: catch2/internal/catch_context.cpp.s
@@ -1094,7 +1029,7 @@ catch2/internal/catch_context.s: catch2/internal/catch_context.cpp.s
 
 # target to generate assembly for a file
 catch2/internal/catch_context.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_context.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_context.cpp.s
 .PHONY : catch2/internal/catch_context.cpp.s
 
 catch2/internal/catch_debug_console.o: catch2/internal/catch_debug_console.cpp.o
@@ -1102,7 +1037,7 @@ catch2/internal/catch_debug_console.o: catch2/internal/catch_debug_console.cpp.o
 
 # target to build an object file
 catch2/internal/catch_debug_console.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_debug_console.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_debug_console.cpp.o
 .PHONY : catch2/internal/catch_debug_console.cpp.o
 
 catch2/internal/catch_debug_console.i: catch2/internal/catch_debug_console.cpp.i
@@ -1110,7 +1045,7 @@ catch2/internal/catch_debug_console.i: catch2/internal/catch_debug_console.cpp.i
 
 # target to preprocess a source file
 catch2/internal/catch_debug_console.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_debug_console.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_debug_console.cpp.i
 .PHONY : catch2/internal/catch_debug_console.cpp.i
 
 catch2/internal/catch_debug_console.s: catch2/internal/catch_debug_console.cpp.s
@@ -1118,7 +1053,7 @@ catch2/internal/catch_debug_console.s: catch2/internal/catch_debug_console.cpp.s
 
 # target to generate assembly for a file
 catch2/internal/catch_debug_console.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_debug_console.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_debug_console.cpp.s
 .PHONY : catch2/internal/catch_debug_console.cpp.s
 
 catch2/internal/catch_debugger.o: catch2/internal/catch_debugger.cpp.o
@@ -1126,7 +1061,7 @@ catch2/internal/catch_debugger.o: catch2/internal/catch_debugger.cpp.o
 
 # target to build an object file
 catch2/internal/catch_debugger.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_debugger.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_debugger.cpp.o
 .PHONY : catch2/internal/catch_debugger.cpp.o
 
 catch2/internal/catch_debugger.i: catch2/internal/catch_debugger.cpp.i
@@ -1134,7 +1069,7 @@ catch2/internal/catch_debugger.i: catch2/internal/catch_debugger.cpp.i
 
 # target to preprocess a source file
 catch2/internal/catch_debugger.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_debugger.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_debugger.cpp.i
 .PHONY : catch2/internal/catch_debugger.cpp.i
 
 catch2/internal/catch_debugger.s: catch2/internal/catch_debugger.cpp.s
@@ -1142,7 +1077,7 @@ catch2/internal/catch_debugger.s: catch2/internal/catch_debugger.cpp.s
 
 # target to generate assembly for a file
 catch2/internal/catch_debugger.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_debugger.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_debugger.cpp.s
 .PHONY : catch2/internal/catch_debugger.cpp.s
 
 catch2/internal/catch_decomposer.o: catch2/internal/catch_decomposer.cpp.o
@@ -1150,7 +1085,7 @@ catch2/internal/catch_decomposer.o: catch2/internal/catch_decomposer.cpp.o
 
 # target to build an object file
 catch2/internal/catch_decomposer.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_decomposer.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_decomposer.cpp.o
 .PHONY : catch2/internal/catch_decomposer.cpp.o
 
 catch2/internal/catch_decomposer.i: catch2/internal/catch_decomposer.cpp.i
@@ -1158,7 +1093,7 @@ catch2/internal/catch_decomposer.i: catch2/internal/catch_decomposer.cpp.i
 
 # target to preprocess a source file
 catch2/internal/catch_decomposer.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_decomposer.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_decomposer.cpp.i
 .PHONY : catch2/internal/catch_decomposer.cpp.i
 
 catch2/internal/catch_decomposer.s: catch2/internal/catch_decomposer.cpp.s
@@ -1166,7 +1101,7 @@ catch2/internal/catch_decomposer.s: catch2/internal/catch_decomposer.cpp.s
 
 # target to generate assembly for a file
 catch2/internal/catch_decomposer.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_decomposer.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_decomposer.cpp.s
 .PHONY : catch2/internal/catch_decomposer.cpp.s
 
 catch2/internal/catch_enforce.o: catch2/internal/catch_enforce.cpp.o
@@ -1174,7 +1109,7 @@ catch2/internal/catch_enforce.o: catch2/internal/catch_enforce.cpp.o
 
 # target to build an object file
 catch2/internal/catch_enforce.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_enforce.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_enforce.cpp.o
 .PHONY : catch2/internal/catch_enforce.cpp.o
 
 catch2/internal/catch_enforce.i: catch2/internal/catch_enforce.cpp.i
@@ -1182,7 +1117,7 @@ catch2/internal/catch_enforce.i: catch2/internal/catch_enforce.cpp.i
 
 # target to preprocess a source file
 catch2/internal/catch_enforce.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_enforce.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_enforce.cpp.i
 .PHONY : catch2/internal/catch_enforce.cpp.i
 
 catch2/internal/catch_enforce.s: catch2/internal/catch_enforce.cpp.s
@@ -1190,7 +1125,7 @@ catch2/internal/catch_enforce.s: catch2/internal/catch_enforce.cpp.s
 
 # target to generate assembly for a file
 catch2/internal/catch_enforce.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_enforce.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_enforce.cpp.s
 .PHONY : catch2/internal/catch_enforce.cpp.s
 
 catch2/internal/catch_enum_values_registry.o: catch2/internal/catch_enum_values_registry.cpp.o
@@ -1198,7 +1133,7 @@ catch2/internal/catch_enum_values_registry.o: catch2/internal/catch_enum_values_
 
 # target to build an object file
 catch2/internal/catch_enum_values_registry.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_enum_values_registry.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_enum_values_registry.cpp.o
 .PHONY : catch2/internal/catch_enum_values_registry.cpp.o
 
 catch2/internal/catch_enum_values_registry.i: catch2/internal/catch_enum_values_registry.cpp.i
@@ -1206,7 +1141,7 @@ catch2/internal/catch_enum_values_registry.i: catch2/internal/catch_enum_values_
 
 # target to preprocess a source file
 catch2/internal/catch_enum_values_registry.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_enum_values_registry.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_enum_values_registry.cpp.i
 .PHONY : catch2/internal/catch_enum_values_registry.cpp.i
 
 catch2/internal/catch_enum_values_registry.s: catch2/internal/catch_enum_values_registry.cpp.s
@@ -1214,7 +1149,7 @@ catch2/internal/catch_enum_values_registry.s: catch2/internal/catch_enum_values_
 
 # target to generate assembly for a file
 catch2/internal/catch_enum_values_registry.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_enum_values_registry.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_enum_values_registry.cpp.s
 .PHONY : catch2/internal/catch_enum_values_registry.cpp.s
 
 catch2/internal/catch_errno_guard.o: catch2/internal/catch_errno_guard.cpp.o
@@ -1222,7 +1157,7 @@ catch2/internal/catch_errno_guard.o: catch2/internal/catch_errno_guard.cpp.o
 
 # target to build an object file
 catch2/internal/catch_errno_guard.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_errno_guard.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_errno_guard.cpp.o
 .PHONY : catch2/internal/catch_errno_guard.cpp.o
 
 catch2/internal/catch_errno_guard.i: catch2/internal/catch_errno_guard.cpp.i
@@ -1230,7 +1165,7 @@ catch2/internal/catch_errno_guard.i: catch2/internal/catch_errno_guard.cpp.i
 
 # target to preprocess a source file
 catch2/internal/catch_errno_guard.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_errno_guard.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_errno_guard.cpp.i
 .PHONY : catch2/internal/catch_errno_guard.cpp.i
 
 catch2/internal/catch_errno_guard.s: catch2/internal/catch_errno_guard.cpp.s
@@ -1238,7 +1173,7 @@ catch2/internal/catch_errno_guard.s: catch2/internal/catch_errno_guard.cpp.s
 
 # target to generate assembly for a file
 catch2/internal/catch_errno_guard.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_errno_guard.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_errno_guard.cpp.s
 .PHONY : catch2/internal/catch_errno_guard.cpp.s
 
 catch2/internal/catch_exception_translator_registry.o: catch2/internal/catch_exception_translator_registry.cpp.o
@@ -1246,7 +1181,7 @@ catch2/internal/catch_exception_translator_registry.o: catch2/internal/catch_exc
 
 # target to build an object file
 catch2/internal/catch_exception_translator_registry.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_exception_translator_registry.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_exception_translator_registry.cpp.o
 .PHONY : catch2/internal/catch_exception_translator_registry.cpp.o
 
 catch2/internal/catch_exception_translator_registry.i: catch2/internal/catch_exception_translator_registry.cpp.i
@@ -1254,7 +1189,7 @@ catch2/internal/catch_exception_translator_registry.i: catch2/internal/catch_exc
 
 # target to preprocess a source file
 catch2/internal/catch_exception_translator_registry.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_exception_translator_registry.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_exception_translator_registry.cpp.i
 .PHONY : catch2/internal/catch_exception_translator_registry.cpp.i
 
 catch2/internal/catch_exception_translator_registry.s: catch2/internal/catch_exception_translator_registry.cpp.s
@@ -1262,7 +1197,7 @@ catch2/internal/catch_exception_translator_registry.s: catch2/internal/catch_exc
 
 # target to generate assembly for a file
 catch2/internal/catch_exception_translator_registry.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_exception_translator_registry.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_exception_translator_registry.cpp.s
 .PHONY : catch2/internal/catch_exception_translator_registry.cpp.s
 
 catch2/internal/catch_fatal_condition_handler.o: catch2/internal/catch_fatal_condition_handler.cpp.o
@@ -1270,7 +1205,7 @@ catch2/internal/catch_fatal_condition_handler.o: catch2/internal/catch_fatal_con
 
 # target to build an object file
 catch2/internal/catch_fatal_condition_handler.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_fatal_condition_handler.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_fatal_condition_handler.cpp.o
 .PHONY : catch2/internal/catch_fatal_condition_handler.cpp.o
 
 catch2/internal/catch_fatal_condition_handler.i: catch2/internal/catch_fatal_condition_handler.cpp.i
@@ -1278,7 +1213,7 @@ catch2/internal/catch_fatal_condition_handler.i: catch2/internal/catch_fatal_con
 
 # target to preprocess a source file
 catch2/internal/catch_fatal_condition_handler.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_fatal_condition_handler.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_fatal_condition_handler.cpp.i
 .PHONY : catch2/internal/catch_fatal_condition_handler.cpp.i
 
 catch2/internal/catch_fatal_condition_handler.s: catch2/internal/catch_fatal_condition_handler.cpp.s
@@ -1286,7 +1221,7 @@ catch2/internal/catch_fatal_condition_handler.s: catch2/internal/catch_fatal_con
 
 # target to generate assembly for a file
 catch2/internal/catch_fatal_condition_handler.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_fatal_condition_handler.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_fatal_condition_handler.cpp.s
 .PHONY : catch2/internal/catch_fatal_condition_handler.cpp.s
 
 catch2/internal/catch_floating_point_helpers.o: catch2/internal/catch_floating_point_helpers.cpp.o
@@ -1294,7 +1229,7 @@ catch2/internal/catch_floating_point_helpers.o: catch2/internal/catch_floating_p
 
 # target to build an object file
 catch2/internal/catch_floating_point_helpers.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_floating_point_helpers.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_floating_point_helpers.cpp.o
 .PHONY : catch2/internal/catch_floating_point_helpers.cpp.o
 
 catch2/internal/catch_floating_point_helpers.i: catch2/internal/catch_floating_point_helpers.cpp.i
@@ -1302,7 +1237,7 @@ catch2/internal/catch_floating_point_helpers.i: catch2/internal/catch_floating_p
 
 # target to preprocess a source file
 catch2/internal/catch_floating_point_helpers.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_floating_point_helpers.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_floating_point_helpers.cpp.i
 .PHONY : catch2/internal/catch_floating_point_helpers.cpp.i
 
 catch2/internal/catch_floating_point_helpers.s: catch2/internal/catch_floating_point_helpers.cpp.s
@@ -1310,7 +1245,7 @@ catch2/internal/catch_floating_point_helpers.s: catch2/internal/catch_floating_p
 
 # target to generate assembly for a file
 catch2/internal/catch_floating_point_helpers.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_floating_point_helpers.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_floating_point_helpers.cpp.s
 .PHONY : catch2/internal/catch_floating_point_helpers.cpp.s
 
 catch2/internal/catch_getenv.o: catch2/internal/catch_getenv.cpp.o
@@ -1318,7 +1253,7 @@ catch2/internal/catch_getenv.o: catch2/internal/catch_getenv.cpp.o
 
 # target to build an object file
 catch2/internal/catch_getenv.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_getenv.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_getenv.cpp.o
 .PHONY : catch2/internal/catch_getenv.cpp.o
 
 catch2/internal/catch_getenv.i: catch2/internal/catch_getenv.cpp.i
@@ -1326,7 +1261,7 @@ catch2/internal/catch_getenv.i: catch2/internal/catch_getenv.cpp.i
 
 # target to preprocess a source file
 catch2/internal/catch_getenv.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_getenv.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_getenv.cpp.i
 .PHONY : catch2/internal/catch_getenv.cpp.i
 
 catch2/internal/catch_getenv.s: catch2/internal/catch_getenv.cpp.s
@@ -1334,7 +1269,7 @@ catch2/internal/catch_getenv.s: catch2/internal/catch_getenv.cpp.s
 
 # target to generate assembly for a file
 catch2/internal/catch_getenv.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_getenv.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_getenv.cpp.s
 .PHONY : catch2/internal/catch_getenv.cpp.s
 
 catch2/internal/catch_istream.o: catch2/internal/catch_istream.cpp.o
@@ -1342,7 +1277,7 @@ catch2/internal/catch_istream.o: catch2/internal/catch_istream.cpp.o
 
 # target to build an object file
 catch2/internal/catch_istream.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_istream.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_istream.cpp.o
 .PHONY : catch2/internal/catch_istream.cpp.o
 
 catch2/internal/catch_istream.i: catch2/internal/catch_istream.cpp.i
@@ -1350,7 +1285,7 @@ catch2/internal/catch_istream.i: catch2/internal/catch_istream.cpp.i
 
 # target to preprocess a source file
 catch2/internal/catch_istream.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_istream.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_istream.cpp.i
 .PHONY : catch2/internal/catch_istream.cpp.i
 
 catch2/internal/catch_istream.s: catch2/internal/catch_istream.cpp.s
@@ -1358,7 +1293,7 @@ catch2/internal/catch_istream.s: catch2/internal/catch_istream.cpp.s
 
 # target to generate assembly for a file
 catch2/internal/catch_istream.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_istream.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_istream.cpp.s
 .PHONY : catch2/internal/catch_istream.cpp.s
 
 catch2/internal/catch_jsonwriter.o: catch2/internal/catch_jsonwriter.cpp.o
@@ -1366,7 +1301,7 @@ catch2/internal/catch_jsonwriter.o: catch2/internal/catch_jsonwriter.cpp.o
 
 # target to build an object file
 catch2/internal/catch_jsonwriter.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_jsonwriter.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_jsonwriter.cpp.o
 .PHONY : catch2/internal/catch_jsonwriter.cpp.o
 
 catch2/internal/catch_jsonwriter.i: catch2/internal/catch_jsonwriter.cpp.i
@@ -1374,7 +1309,7 @@ catch2/internal/catch_jsonwriter.i: catch2/internal/catch_jsonwriter.cpp.i
 
 # target to preprocess a source file
 catch2/internal/catch_jsonwriter.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_jsonwriter.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_jsonwriter.cpp.i
 .PHONY : catch2/internal/catch_jsonwriter.cpp.i
 
 catch2/internal/catch_jsonwriter.s: catch2/internal/catch_jsonwriter.cpp.s
@@ -1382,7 +1317,7 @@ catch2/internal/catch_jsonwriter.s: catch2/internal/catch_jsonwriter.cpp.s
 
 # target to generate assembly for a file
 catch2/internal/catch_jsonwriter.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_jsonwriter.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_jsonwriter.cpp.s
 .PHONY : catch2/internal/catch_jsonwriter.cpp.s
 
 catch2/internal/catch_lazy_expr.o: catch2/internal/catch_lazy_expr.cpp.o
@@ -1390,7 +1325,7 @@ catch2/internal/catch_lazy_expr.o: catch2/internal/catch_lazy_expr.cpp.o
 
 # target to build an object file
 catch2/internal/catch_lazy_expr.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_lazy_expr.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_lazy_expr.cpp.o
 .PHONY : catch2/internal/catch_lazy_expr.cpp.o
 
 catch2/internal/catch_lazy_expr.i: catch2/internal/catch_lazy_expr.cpp.i
@@ -1398,7 +1333,7 @@ catch2/internal/catch_lazy_expr.i: catch2/internal/catch_lazy_expr.cpp.i
 
 # target to preprocess a source file
 catch2/internal/catch_lazy_expr.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_lazy_expr.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_lazy_expr.cpp.i
 .PHONY : catch2/internal/catch_lazy_expr.cpp.i
 
 catch2/internal/catch_lazy_expr.s: catch2/internal/catch_lazy_expr.cpp.s
@@ -1406,7 +1341,7 @@ catch2/internal/catch_lazy_expr.s: catch2/internal/catch_lazy_expr.cpp.s
 
 # target to generate assembly for a file
 catch2/internal/catch_lazy_expr.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_lazy_expr.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_lazy_expr.cpp.s
 .PHONY : catch2/internal/catch_lazy_expr.cpp.s
 
 catch2/internal/catch_leak_detector.o: catch2/internal/catch_leak_detector.cpp.o
@@ -1414,7 +1349,7 @@ catch2/internal/catch_leak_detector.o: catch2/internal/catch_leak_detector.cpp.o
 
 # target to build an object file
 catch2/internal/catch_leak_detector.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_leak_detector.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_leak_detector.cpp.o
 .PHONY : catch2/internal/catch_leak_detector.cpp.o
 
 catch2/internal/catch_leak_detector.i: catch2/internal/catch_leak_detector.cpp.i
@@ -1422,7 +1357,7 @@ catch2/internal/catch_leak_detector.i: catch2/internal/catch_leak_detector.cpp.i
 
 # target to preprocess a source file
 catch2/internal/catch_leak_detector.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_leak_detector.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_leak_detector.cpp.i
 .PHONY : catch2/internal/catch_leak_detector.cpp.i
 
 catch2/internal/catch_leak_detector.s: catch2/internal/catch_leak_detector.cpp.s
@@ -1430,7 +1365,7 @@ catch2/internal/catch_leak_detector.s: catch2/internal/catch_leak_detector.cpp.s
 
 # target to generate assembly for a file
 catch2/internal/catch_leak_detector.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_leak_detector.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_leak_detector.cpp.s
 .PHONY : catch2/internal/catch_leak_detector.cpp.s
 
 catch2/internal/catch_list.o: catch2/internal/catch_list.cpp.o
@@ -1438,7 +1373,7 @@ catch2/internal/catch_list.o: catch2/internal/catch_list.cpp.o
 
 # target to build an object file
 catch2/internal/catch_list.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_list.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_list.cpp.o
 .PHONY : catch2/internal/catch_list.cpp.o
 
 catch2/internal/catch_list.i: catch2/internal/catch_list.cpp.i
@@ -1446,7 +1381,7 @@ catch2/internal/catch_list.i: catch2/internal/catch_list.cpp.i
 
 # target to preprocess a source file
 catch2/internal/catch_list.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_list.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_list.cpp.i
 .PHONY : catch2/internal/catch_list.cpp.i
 
 catch2/internal/catch_list.s: catch2/internal/catch_list.cpp.s
@@ -1454,7 +1389,7 @@ catch2/internal/catch_list.s: catch2/internal/catch_list.cpp.s
 
 # target to generate assembly for a file
 catch2/internal/catch_list.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_list.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_list.cpp.s
 .PHONY : catch2/internal/catch_list.cpp.s
 
 catch2/internal/catch_main.o: catch2/internal/catch_main.cpp.o
@@ -1462,7 +1397,7 @@ catch2/internal/catch_main.o: catch2/internal/catch_main.cpp.o
 
 # target to build an object file
 catch2/internal/catch_main.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/build.make lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/catch2/internal/catch_main.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/build.make lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/catch2/internal/catch_main.cpp.o
 .PHONY : catch2/internal/catch_main.cpp.o
 
 catch2/internal/catch_main.i: catch2/internal/catch_main.cpp.i
@@ -1470,7 +1405,7 @@ catch2/internal/catch_main.i: catch2/internal/catch_main.cpp.i
 
 # target to preprocess a source file
 catch2/internal/catch_main.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/build.make lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/catch2/internal/catch_main.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/build.make lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/catch2/internal/catch_main.cpp.i
 .PHONY : catch2/internal/catch_main.cpp.i
 
 catch2/internal/catch_main.s: catch2/internal/catch_main.cpp.s
@@ -1478,7 +1413,7 @@ catch2/internal/catch_main.s: catch2/internal/catch_main.cpp.s
 
 # target to generate assembly for a file
 catch2/internal/catch_main.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/build.make lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/catch2/internal/catch_main.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/build.make lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/catch2/internal/catch_main.cpp.s
 .PHONY : catch2/internal/catch_main.cpp.s
 
 catch2/internal/catch_message_info.o: catch2/internal/catch_message_info.cpp.o
@@ -1486,7 +1421,7 @@ catch2/internal/catch_message_info.o: catch2/internal/catch_message_info.cpp.o
 
 # target to build an object file
 catch2/internal/catch_message_info.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_message_info.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_message_info.cpp.o
 .PHONY : catch2/internal/catch_message_info.cpp.o
 
 catch2/internal/catch_message_info.i: catch2/internal/catch_message_info.cpp.i
@@ -1494,7 +1429,7 @@ catch2/internal/catch_message_info.i: catch2/internal/catch_message_info.cpp.i
 
 # target to preprocess a source file
 catch2/internal/catch_message_info.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_message_info.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_message_info.cpp.i
 .PHONY : catch2/internal/catch_message_info.cpp.i
 
 catch2/internal/catch_message_info.s: catch2/internal/catch_message_info.cpp.s
@@ -1502,7 +1437,7 @@ catch2/internal/catch_message_info.s: catch2/internal/catch_message_info.cpp.s
 
 # target to generate assembly for a file
 catch2/internal/catch_message_info.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_message_info.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_message_info.cpp.s
 .PHONY : catch2/internal/catch_message_info.cpp.s
 
 catch2/internal/catch_output_redirect.o: catch2/internal/catch_output_redirect.cpp.o
@@ -1510,7 +1445,7 @@ catch2/internal/catch_output_redirect.o: catch2/internal/catch_output_redirect.c
 
 # target to build an object file
 catch2/internal/catch_output_redirect.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_output_redirect.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_output_redirect.cpp.o
 .PHONY : catch2/internal/catch_output_redirect.cpp.o
 
 catch2/internal/catch_output_redirect.i: catch2/internal/catch_output_redirect.cpp.i
@@ -1518,7 +1453,7 @@ catch2/internal/catch_output_redirect.i: catch2/internal/catch_output_redirect.c
 
 # target to preprocess a source file
 catch2/internal/catch_output_redirect.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_output_redirect.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_output_redirect.cpp.i
 .PHONY : catch2/internal/catch_output_redirect.cpp.i
 
 catch2/internal/catch_output_redirect.s: catch2/internal/catch_output_redirect.cpp.s
@@ -1526,7 +1461,7 @@ catch2/internal/catch_output_redirect.s: catch2/internal/catch_output_redirect.c
 
 # target to generate assembly for a file
 catch2/internal/catch_output_redirect.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_output_redirect.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_output_redirect.cpp.s
 .PHONY : catch2/internal/catch_output_redirect.cpp.s
 
 catch2/internal/catch_parse_numbers.o: catch2/internal/catch_parse_numbers.cpp.o
@@ -1534,7 +1469,7 @@ catch2/internal/catch_parse_numbers.o: catch2/internal/catch_parse_numbers.cpp.o
 
 # target to build an object file
 catch2/internal/catch_parse_numbers.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_parse_numbers.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_parse_numbers.cpp.o
 .PHONY : catch2/internal/catch_parse_numbers.cpp.o
 
 catch2/internal/catch_parse_numbers.i: catch2/internal/catch_parse_numbers.cpp.i
@@ -1542,7 +1477,7 @@ catch2/internal/catch_parse_numbers.i: catch2/internal/catch_parse_numbers.cpp.i
 
 # target to preprocess a source file
 catch2/internal/catch_parse_numbers.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_parse_numbers.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_parse_numbers.cpp.i
 .PHONY : catch2/internal/catch_parse_numbers.cpp.i
 
 catch2/internal/catch_parse_numbers.s: catch2/internal/catch_parse_numbers.cpp.s
@@ -1550,7 +1485,7 @@ catch2/internal/catch_parse_numbers.s: catch2/internal/catch_parse_numbers.cpp.s
 
 # target to generate assembly for a file
 catch2/internal/catch_parse_numbers.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_parse_numbers.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_parse_numbers.cpp.s
 .PHONY : catch2/internal/catch_parse_numbers.cpp.s
 
 catch2/internal/catch_polyfills.o: catch2/internal/catch_polyfills.cpp.o
@@ -1558,7 +1493,7 @@ catch2/internal/catch_polyfills.o: catch2/internal/catch_polyfills.cpp.o
 
 # target to build an object file
 catch2/internal/catch_polyfills.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_polyfills.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_polyfills.cpp.o
 .PHONY : catch2/internal/catch_polyfills.cpp.o
 
 catch2/internal/catch_polyfills.i: catch2/internal/catch_polyfills.cpp.i
@@ -1566,7 +1501,7 @@ catch2/internal/catch_polyfills.i: catch2/internal/catch_polyfills.cpp.i
 
 # target to preprocess a source file
 catch2/internal/catch_polyfills.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_polyfills.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_polyfills.cpp.i
 .PHONY : catch2/internal/catch_polyfills.cpp.i
 
 catch2/internal/catch_polyfills.s: catch2/internal/catch_polyfills.cpp.s
@@ -1574,7 +1509,7 @@ catch2/internal/catch_polyfills.s: catch2/internal/catch_polyfills.cpp.s
 
 # target to generate assembly for a file
 catch2/internal/catch_polyfills.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_polyfills.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_polyfills.cpp.s
 .PHONY : catch2/internal/catch_polyfills.cpp.s
 
 catch2/internal/catch_random_number_generator.o: catch2/internal/catch_random_number_generator.cpp.o
@@ -1582,7 +1517,7 @@ catch2/internal/catch_random_number_generator.o: catch2/internal/catch_random_nu
 
 # target to build an object file
 catch2/internal/catch_random_number_generator.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_random_number_generator.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_random_number_generator.cpp.o
 .PHONY : catch2/internal/catch_random_number_generator.cpp.o
 
 catch2/internal/catch_random_number_generator.i: catch2/internal/catch_random_number_generator.cpp.i
@@ -1590,7 +1525,7 @@ catch2/internal/catch_random_number_generator.i: catch2/internal/catch_random_nu
 
 # target to preprocess a source file
 catch2/internal/catch_random_number_generator.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_random_number_generator.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_random_number_generator.cpp.i
 .PHONY : catch2/internal/catch_random_number_generator.cpp.i
 
 catch2/internal/catch_random_number_generator.s: catch2/internal/catch_random_number_generator.cpp.s
@@ -1598,7 +1533,7 @@ catch2/internal/catch_random_number_generator.s: catch2/internal/catch_random_nu
 
 # target to generate assembly for a file
 catch2/internal/catch_random_number_generator.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_random_number_generator.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_random_number_generator.cpp.s
 .PHONY : catch2/internal/catch_random_number_generator.cpp.s
 
 catch2/internal/catch_random_seed_generation.o: catch2/internal/catch_random_seed_generation.cpp.o
@@ -1606,7 +1541,7 @@ catch2/internal/catch_random_seed_generation.o: catch2/internal/catch_random_see
 
 # target to build an object file
 catch2/internal/catch_random_seed_generation.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_random_seed_generation.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_random_seed_generation.cpp.o
 .PHONY : catch2/internal/catch_random_seed_generation.cpp.o
 
 catch2/internal/catch_random_seed_generation.i: catch2/internal/catch_random_seed_generation.cpp.i
@@ -1614,7 +1549,7 @@ catch2/internal/catch_random_seed_generation.i: catch2/internal/catch_random_see
 
 # target to preprocess a source file
 catch2/internal/catch_random_seed_generation.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_random_seed_generation.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_random_seed_generation.cpp.i
 .PHONY : catch2/internal/catch_random_seed_generation.cpp.i
 
 catch2/internal/catch_random_seed_generation.s: catch2/internal/catch_random_seed_generation.cpp.s
@@ -1622,7 +1557,7 @@ catch2/internal/catch_random_seed_generation.s: catch2/internal/catch_random_see
 
 # target to generate assembly for a file
 catch2/internal/catch_random_seed_generation.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_random_seed_generation.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_random_seed_generation.cpp.s
 .PHONY : catch2/internal/catch_random_seed_generation.cpp.s
 
 catch2/internal/catch_reporter_registry.o: catch2/internal/catch_reporter_registry.cpp.o
@@ -1630,7 +1565,7 @@ catch2/internal/catch_reporter_registry.o: catch2/internal/catch_reporter_regist
 
 # target to build an object file
 catch2/internal/catch_reporter_registry.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_reporter_registry.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_reporter_registry.cpp.o
 .PHONY : catch2/internal/catch_reporter_registry.cpp.o
 
 catch2/internal/catch_reporter_registry.i: catch2/internal/catch_reporter_registry.cpp.i
@@ -1638,7 +1573,7 @@ catch2/internal/catch_reporter_registry.i: catch2/internal/catch_reporter_regist
 
 # target to preprocess a source file
 catch2/internal/catch_reporter_registry.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_reporter_registry.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_reporter_registry.cpp.i
 .PHONY : catch2/internal/catch_reporter_registry.cpp.i
 
 catch2/internal/catch_reporter_registry.s: catch2/internal/catch_reporter_registry.cpp.s
@@ -1646,7 +1581,7 @@ catch2/internal/catch_reporter_registry.s: catch2/internal/catch_reporter_regist
 
 # target to generate assembly for a file
 catch2/internal/catch_reporter_registry.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_reporter_registry.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_reporter_registry.cpp.s
 .PHONY : catch2/internal/catch_reporter_registry.cpp.s
 
 catch2/internal/catch_reporter_spec_parser.o: catch2/internal/catch_reporter_spec_parser.cpp.o
@@ -1654,7 +1589,7 @@ catch2/internal/catch_reporter_spec_parser.o: catch2/internal/catch_reporter_spe
 
 # target to build an object file
 catch2/internal/catch_reporter_spec_parser.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_reporter_spec_parser.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_reporter_spec_parser.cpp.o
 .PHONY : catch2/internal/catch_reporter_spec_parser.cpp.o
 
 catch2/internal/catch_reporter_spec_parser.i: catch2/internal/catch_reporter_spec_parser.cpp.i
@@ -1662,7 +1597,7 @@ catch2/internal/catch_reporter_spec_parser.i: catch2/internal/catch_reporter_spe
 
 # target to preprocess a source file
 catch2/internal/catch_reporter_spec_parser.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_reporter_spec_parser.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_reporter_spec_parser.cpp.i
 .PHONY : catch2/internal/catch_reporter_spec_parser.cpp.i
 
 catch2/internal/catch_reporter_spec_parser.s: catch2/internal/catch_reporter_spec_parser.cpp.s
@@ -1670,7 +1605,7 @@ catch2/internal/catch_reporter_spec_parser.s: catch2/internal/catch_reporter_spe
 
 # target to generate assembly for a file
 catch2/internal/catch_reporter_spec_parser.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_reporter_spec_parser.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_reporter_spec_parser.cpp.s
 .PHONY : catch2/internal/catch_reporter_spec_parser.cpp.s
 
 catch2/internal/catch_reusable_string_stream.o: catch2/internal/catch_reusable_string_stream.cpp.o
@@ -1678,7 +1613,7 @@ catch2/internal/catch_reusable_string_stream.o: catch2/internal/catch_reusable_s
 
 # target to build an object file
 catch2/internal/catch_reusable_string_stream.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_reusable_string_stream.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_reusable_string_stream.cpp.o
 .PHONY : catch2/internal/catch_reusable_string_stream.cpp.o
 
 catch2/internal/catch_reusable_string_stream.i: catch2/internal/catch_reusable_string_stream.cpp.i
@@ -1686,7 +1621,7 @@ catch2/internal/catch_reusable_string_stream.i: catch2/internal/catch_reusable_s
 
 # target to preprocess a source file
 catch2/internal/catch_reusable_string_stream.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_reusable_string_stream.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_reusable_string_stream.cpp.i
 .PHONY : catch2/internal/catch_reusable_string_stream.cpp.i
 
 catch2/internal/catch_reusable_string_stream.s: catch2/internal/catch_reusable_string_stream.cpp.s
@@ -1694,7 +1629,7 @@ catch2/internal/catch_reusable_string_stream.s: catch2/internal/catch_reusable_s
 
 # target to generate assembly for a file
 catch2/internal/catch_reusable_string_stream.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_reusable_string_stream.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_reusable_string_stream.cpp.s
 .PHONY : catch2/internal/catch_reusable_string_stream.cpp.s
 
 catch2/internal/catch_run_context.o: catch2/internal/catch_run_context.cpp.o
@@ -1702,7 +1637,7 @@ catch2/internal/catch_run_context.o: catch2/internal/catch_run_context.cpp.o
 
 # target to build an object file
 catch2/internal/catch_run_context.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_run_context.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_run_context.cpp.o
 .PHONY : catch2/internal/catch_run_context.cpp.o
 
 catch2/internal/catch_run_context.i: catch2/internal/catch_run_context.cpp.i
@@ -1710,7 +1645,7 @@ catch2/internal/catch_run_context.i: catch2/internal/catch_run_context.cpp.i
 
 # target to preprocess a source file
 catch2/internal/catch_run_context.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_run_context.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_run_context.cpp.i
 .PHONY : catch2/internal/catch_run_context.cpp.i
 
 catch2/internal/catch_run_context.s: catch2/internal/catch_run_context.cpp.s
@@ -1718,7 +1653,7 @@ catch2/internal/catch_run_context.s: catch2/internal/catch_run_context.cpp.s
 
 # target to generate assembly for a file
 catch2/internal/catch_run_context.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_run_context.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_run_context.cpp.s
 .PHONY : catch2/internal/catch_run_context.cpp.s
 
 catch2/internal/catch_section.o: catch2/internal/catch_section.cpp.o
@@ -1726,7 +1661,7 @@ catch2/internal/catch_section.o: catch2/internal/catch_section.cpp.o
 
 # target to build an object file
 catch2/internal/catch_section.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_section.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_section.cpp.o
 .PHONY : catch2/internal/catch_section.cpp.o
 
 catch2/internal/catch_section.i: catch2/internal/catch_section.cpp.i
@@ -1734,7 +1669,7 @@ catch2/internal/catch_section.i: catch2/internal/catch_section.cpp.i
 
 # target to preprocess a source file
 catch2/internal/catch_section.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_section.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_section.cpp.i
 .PHONY : catch2/internal/catch_section.cpp.i
 
 catch2/internal/catch_section.s: catch2/internal/catch_section.cpp.s
@@ -1742,7 +1677,7 @@ catch2/internal/catch_section.s: catch2/internal/catch_section.cpp.s
 
 # target to generate assembly for a file
 catch2/internal/catch_section.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_section.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_section.cpp.s
 .PHONY : catch2/internal/catch_section.cpp.s
 
 catch2/internal/catch_singletons.o: catch2/internal/catch_singletons.cpp.o
@@ -1750,7 +1685,7 @@ catch2/internal/catch_singletons.o: catch2/internal/catch_singletons.cpp.o
 
 # target to build an object file
 catch2/internal/catch_singletons.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_singletons.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_singletons.cpp.o
 .PHONY : catch2/internal/catch_singletons.cpp.o
 
 catch2/internal/catch_singletons.i: catch2/internal/catch_singletons.cpp.i
@@ -1758,7 +1693,7 @@ catch2/internal/catch_singletons.i: catch2/internal/catch_singletons.cpp.i
 
 # target to preprocess a source file
 catch2/internal/catch_singletons.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_singletons.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_singletons.cpp.i
 .PHONY : catch2/internal/catch_singletons.cpp.i
 
 catch2/internal/catch_singletons.s: catch2/internal/catch_singletons.cpp.s
@@ -1766,7 +1701,7 @@ catch2/internal/catch_singletons.s: catch2/internal/catch_singletons.cpp.s
 
 # target to generate assembly for a file
 catch2/internal/catch_singletons.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_singletons.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_singletons.cpp.s
 .PHONY : catch2/internal/catch_singletons.cpp.s
 
 catch2/internal/catch_source_line_info.o: catch2/internal/catch_source_line_info.cpp.o
@@ -1774,7 +1709,7 @@ catch2/internal/catch_source_line_info.o: catch2/internal/catch_source_line_info
 
 # target to build an object file
 catch2/internal/catch_source_line_info.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_source_line_info.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_source_line_info.cpp.o
 .PHONY : catch2/internal/catch_source_line_info.cpp.o
 
 catch2/internal/catch_source_line_info.i: catch2/internal/catch_source_line_info.cpp.i
@@ -1782,7 +1717,7 @@ catch2/internal/catch_source_line_info.i: catch2/internal/catch_source_line_info
 
 # target to preprocess a source file
 catch2/internal/catch_source_line_info.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_source_line_info.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_source_line_info.cpp.i
 .PHONY : catch2/internal/catch_source_line_info.cpp.i
 
 catch2/internal/catch_source_line_info.s: catch2/internal/catch_source_line_info.cpp.s
@@ -1790,7 +1725,7 @@ catch2/internal/catch_source_line_info.s: catch2/internal/catch_source_line_info
 
 # target to generate assembly for a file
 catch2/internal/catch_source_line_info.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_source_line_info.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_source_line_info.cpp.s
 .PHONY : catch2/internal/catch_source_line_info.cpp.s
 
 catch2/internal/catch_startup_exception_registry.o: catch2/internal/catch_startup_exception_registry.cpp.o
@@ -1798,7 +1733,7 @@ catch2/internal/catch_startup_exception_registry.o: catch2/internal/catch_startu
 
 # target to build an object file
 catch2/internal/catch_startup_exception_registry.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_startup_exception_registry.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_startup_exception_registry.cpp.o
 .PHONY : catch2/internal/catch_startup_exception_registry.cpp.o
 
 catch2/internal/catch_startup_exception_registry.i: catch2/internal/catch_startup_exception_registry.cpp.i
@@ -1806,7 +1741,7 @@ catch2/internal/catch_startup_exception_registry.i: catch2/internal/catch_startu
 
 # target to preprocess a source file
 catch2/internal/catch_startup_exception_registry.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_startup_exception_registry.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_startup_exception_registry.cpp.i
 .PHONY : catch2/internal/catch_startup_exception_registry.cpp.i
 
 catch2/internal/catch_startup_exception_registry.s: catch2/internal/catch_startup_exception_registry.cpp.s
@@ -1814,7 +1749,7 @@ catch2/internal/catch_startup_exception_registry.s: catch2/internal/catch_startu
 
 # target to generate assembly for a file
 catch2/internal/catch_startup_exception_registry.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_startup_exception_registry.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_startup_exception_registry.cpp.s
 .PHONY : catch2/internal/catch_startup_exception_registry.cpp.s
 
 catch2/internal/catch_stdstreams.o: catch2/internal/catch_stdstreams.cpp.o
@@ -1822,7 +1757,7 @@ catch2/internal/catch_stdstreams.o: catch2/internal/catch_stdstreams.cpp.o
 
 # target to build an object file
 catch2/internal/catch_stdstreams.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_stdstreams.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_stdstreams.cpp.o
 .PHONY : catch2/internal/catch_stdstreams.cpp.o
 
 catch2/internal/catch_stdstreams.i: catch2/internal/catch_stdstreams.cpp.i
@@ -1830,7 +1765,7 @@ catch2/internal/catch_stdstreams.i: catch2/internal/catch_stdstreams.cpp.i
 
 # target to preprocess a source file
 catch2/internal/catch_stdstreams.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_stdstreams.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_stdstreams.cpp.i
 .PHONY : catch2/internal/catch_stdstreams.cpp.i
 
 catch2/internal/catch_stdstreams.s: catch2/internal/catch_stdstreams.cpp.s
@@ -1838,7 +1773,7 @@ catch2/internal/catch_stdstreams.s: catch2/internal/catch_stdstreams.cpp.s
 
 # target to generate assembly for a file
 catch2/internal/catch_stdstreams.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_stdstreams.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_stdstreams.cpp.s
 .PHONY : catch2/internal/catch_stdstreams.cpp.s
 
 catch2/internal/catch_string_manip.o: catch2/internal/catch_string_manip.cpp.o
@@ -1846,7 +1781,7 @@ catch2/internal/catch_string_manip.o: catch2/internal/catch_string_manip.cpp.o
 
 # target to build an object file
 catch2/internal/catch_string_manip.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_string_manip.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_string_manip.cpp.o
 .PHONY : catch2/internal/catch_string_manip.cpp.o
 
 catch2/internal/catch_string_manip.i: catch2/internal/catch_string_manip.cpp.i
@@ -1854,7 +1789,7 @@ catch2/internal/catch_string_manip.i: catch2/internal/catch_string_manip.cpp.i
 
 # target to preprocess a source file
 catch2/internal/catch_string_manip.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_string_manip.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_string_manip.cpp.i
 .PHONY : catch2/internal/catch_string_manip.cpp.i
 
 catch2/internal/catch_string_manip.s: catch2/internal/catch_string_manip.cpp.s
@@ -1862,7 +1797,7 @@ catch2/internal/catch_string_manip.s: catch2/internal/catch_string_manip.cpp.s
 
 # target to generate assembly for a file
 catch2/internal/catch_string_manip.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_string_manip.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_string_manip.cpp.s
 .PHONY : catch2/internal/catch_string_manip.cpp.s
 
 catch2/internal/catch_stringref.o: catch2/internal/catch_stringref.cpp.o
@@ -1870,7 +1805,7 @@ catch2/internal/catch_stringref.o: catch2/internal/catch_stringref.cpp.o
 
 # target to build an object file
 catch2/internal/catch_stringref.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_stringref.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_stringref.cpp.o
 .PHONY : catch2/internal/catch_stringref.cpp.o
 
 catch2/internal/catch_stringref.i: catch2/internal/catch_stringref.cpp.i
@@ -1878,7 +1813,7 @@ catch2/internal/catch_stringref.i: catch2/internal/catch_stringref.cpp.i
 
 # target to preprocess a source file
 catch2/internal/catch_stringref.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_stringref.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_stringref.cpp.i
 .PHONY : catch2/internal/catch_stringref.cpp.i
 
 catch2/internal/catch_stringref.s: catch2/internal/catch_stringref.cpp.s
@@ -1886,7 +1821,7 @@ catch2/internal/catch_stringref.s: catch2/internal/catch_stringref.cpp.s
 
 # target to generate assembly for a file
 catch2/internal/catch_stringref.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_stringref.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_stringref.cpp.s
 .PHONY : catch2/internal/catch_stringref.cpp.s
 
 catch2/internal/catch_tag_alias_registry.o: catch2/internal/catch_tag_alias_registry.cpp.o
@@ -1894,7 +1829,7 @@ catch2/internal/catch_tag_alias_registry.o: catch2/internal/catch_tag_alias_regi
 
 # target to build an object file
 catch2/internal/catch_tag_alias_registry.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_tag_alias_registry.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_tag_alias_registry.cpp.o
 .PHONY : catch2/internal/catch_tag_alias_registry.cpp.o
 
 catch2/internal/catch_tag_alias_registry.i: catch2/internal/catch_tag_alias_registry.cpp.i
@@ -1902,7 +1837,7 @@ catch2/internal/catch_tag_alias_registry.i: catch2/internal/catch_tag_alias_regi
 
 # target to preprocess a source file
 catch2/internal/catch_tag_alias_registry.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_tag_alias_registry.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_tag_alias_registry.cpp.i
 .PHONY : catch2/internal/catch_tag_alias_registry.cpp.i
 
 catch2/internal/catch_tag_alias_registry.s: catch2/internal/catch_tag_alias_registry.cpp.s
@@ -1910,7 +1845,7 @@ catch2/internal/catch_tag_alias_registry.s: catch2/internal/catch_tag_alias_regi
 
 # target to generate assembly for a file
 catch2/internal/catch_tag_alias_registry.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_tag_alias_registry.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_tag_alias_registry.cpp.s
 .PHONY : catch2/internal/catch_tag_alias_registry.cpp.s
 
 catch2/internal/catch_test_case_info_hasher.o: catch2/internal/catch_test_case_info_hasher.cpp.o
@@ -1918,7 +1853,7 @@ catch2/internal/catch_test_case_info_hasher.o: catch2/internal/catch_test_case_i
 
 # target to build an object file
 catch2/internal/catch_test_case_info_hasher.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_case_info_hasher.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_case_info_hasher.cpp.o
 .PHONY : catch2/internal/catch_test_case_info_hasher.cpp.o
 
 catch2/internal/catch_test_case_info_hasher.i: catch2/internal/catch_test_case_info_hasher.cpp.i
@@ -1926,7 +1861,7 @@ catch2/internal/catch_test_case_info_hasher.i: catch2/internal/catch_test_case_i
 
 # target to preprocess a source file
 catch2/internal/catch_test_case_info_hasher.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_case_info_hasher.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_case_info_hasher.cpp.i
 .PHONY : catch2/internal/catch_test_case_info_hasher.cpp.i
 
 catch2/internal/catch_test_case_info_hasher.s: catch2/internal/catch_test_case_info_hasher.cpp.s
@@ -1934,7 +1869,7 @@ catch2/internal/catch_test_case_info_hasher.s: catch2/internal/catch_test_case_i
 
 # target to generate assembly for a file
 catch2/internal/catch_test_case_info_hasher.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_case_info_hasher.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_case_info_hasher.cpp.s
 .PHONY : catch2/internal/catch_test_case_info_hasher.cpp.s
 
 catch2/internal/catch_test_case_registry_impl.o: catch2/internal/catch_test_case_registry_impl.cpp.o
@@ -1942,7 +1877,7 @@ catch2/internal/catch_test_case_registry_impl.o: catch2/internal/catch_test_case
 
 # target to build an object file
 catch2/internal/catch_test_case_registry_impl.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_case_registry_impl.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_case_registry_impl.cpp.o
 .PHONY : catch2/internal/catch_test_case_registry_impl.cpp.o
 
 catch2/internal/catch_test_case_registry_impl.i: catch2/internal/catch_test_case_registry_impl.cpp.i
@@ -1950,7 +1885,7 @@ catch2/internal/catch_test_case_registry_impl.i: catch2/internal/catch_test_case
 
 # target to preprocess a source file
 catch2/internal/catch_test_case_registry_impl.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_case_registry_impl.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_case_registry_impl.cpp.i
 .PHONY : catch2/internal/catch_test_case_registry_impl.cpp.i
 
 catch2/internal/catch_test_case_registry_impl.s: catch2/internal/catch_test_case_registry_impl.cpp.s
@@ -1958,7 +1893,7 @@ catch2/internal/catch_test_case_registry_impl.s: catch2/internal/catch_test_case
 
 # target to generate assembly for a file
 catch2/internal/catch_test_case_registry_impl.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_case_registry_impl.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_case_registry_impl.cpp.s
 .PHONY : catch2/internal/catch_test_case_registry_impl.cpp.s
 
 catch2/internal/catch_test_case_tracker.o: catch2/internal/catch_test_case_tracker.cpp.o
@@ -1966,7 +1901,7 @@ catch2/internal/catch_test_case_tracker.o: catch2/internal/catch_test_case_track
 
 # target to build an object file
 catch2/internal/catch_test_case_tracker.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_case_tracker.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_case_tracker.cpp.o
 .PHONY : catch2/internal/catch_test_case_tracker.cpp.o
 
 catch2/internal/catch_test_case_tracker.i: catch2/internal/catch_test_case_tracker.cpp.i
@@ -1974,7 +1909,7 @@ catch2/internal/catch_test_case_tracker.i: catch2/internal/catch_test_case_track
 
 # target to preprocess a source file
 catch2/internal/catch_test_case_tracker.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_case_tracker.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_case_tracker.cpp.i
 .PHONY : catch2/internal/catch_test_case_tracker.cpp.i
 
 catch2/internal/catch_test_case_tracker.s: catch2/internal/catch_test_case_tracker.cpp.s
@@ -1982,7 +1917,7 @@ catch2/internal/catch_test_case_tracker.s: catch2/internal/catch_test_case_track
 
 # target to generate assembly for a file
 catch2/internal/catch_test_case_tracker.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_case_tracker.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_case_tracker.cpp.s
 .PHONY : catch2/internal/catch_test_case_tracker.cpp.s
 
 catch2/internal/catch_test_failure_exception.o: catch2/internal/catch_test_failure_exception.cpp.o
@@ -1990,7 +1925,7 @@ catch2/internal/catch_test_failure_exception.o: catch2/internal/catch_test_failu
 
 # target to build an object file
 catch2/internal/catch_test_failure_exception.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_failure_exception.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_failure_exception.cpp.o
 .PHONY : catch2/internal/catch_test_failure_exception.cpp.o
 
 catch2/internal/catch_test_failure_exception.i: catch2/internal/catch_test_failure_exception.cpp.i
@@ -1998,7 +1933,7 @@ catch2/internal/catch_test_failure_exception.i: catch2/internal/catch_test_failu
 
 # target to preprocess a source file
 catch2/internal/catch_test_failure_exception.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_failure_exception.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_failure_exception.cpp.i
 .PHONY : catch2/internal/catch_test_failure_exception.cpp.i
 
 catch2/internal/catch_test_failure_exception.s: catch2/internal/catch_test_failure_exception.cpp.s
@@ -2006,7 +1941,7 @@ catch2/internal/catch_test_failure_exception.s: catch2/internal/catch_test_failu
 
 # target to generate assembly for a file
 catch2/internal/catch_test_failure_exception.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_failure_exception.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_failure_exception.cpp.s
 .PHONY : catch2/internal/catch_test_failure_exception.cpp.s
 
 catch2/internal/catch_test_registry.o: catch2/internal/catch_test_registry.cpp.o
@@ -2014,7 +1949,7 @@ catch2/internal/catch_test_registry.o: catch2/internal/catch_test_registry.cpp.o
 
 # target to build an object file
 catch2/internal/catch_test_registry.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_registry.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_registry.cpp.o
 .PHONY : catch2/internal/catch_test_registry.cpp.o
 
 catch2/internal/catch_test_registry.i: catch2/internal/catch_test_registry.cpp.i
@@ -2022,7 +1957,7 @@ catch2/internal/catch_test_registry.i: catch2/internal/catch_test_registry.cpp.i
 
 # target to preprocess a source file
 catch2/internal/catch_test_registry.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_registry.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_registry.cpp.i
 .PHONY : catch2/internal/catch_test_registry.cpp.i
 
 catch2/internal/catch_test_registry.s: catch2/internal/catch_test_registry.cpp.s
@@ -2030,7 +1965,7 @@ catch2/internal/catch_test_registry.s: catch2/internal/catch_test_registry.cpp.s
 
 # target to generate assembly for a file
 catch2/internal/catch_test_registry.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_registry.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_registry.cpp.s
 .PHONY : catch2/internal/catch_test_registry.cpp.s
 
 catch2/internal/catch_test_spec_parser.o: catch2/internal/catch_test_spec_parser.cpp.o
@@ -2038,7 +1973,7 @@ catch2/internal/catch_test_spec_parser.o: catch2/internal/catch_test_spec_parser
 
 # target to build an object file
 catch2/internal/catch_test_spec_parser.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_spec_parser.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_spec_parser.cpp.o
 .PHONY : catch2/internal/catch_test_spec_parser.cpp.o
 
 catch2/internal/catch_test_spec_parser.i: catch2/internal/catch_test_spec_parser.cpp.i
@@ -2046,7 +1981,7 @@ catch2/internal/catch_test_spec_parser.i: catch2/internal/catch_test_spec_parser
 
 # target to preprocess a source file
 catch2/internal/catch_test_spec_parser.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_spec_parser.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_spec_parser.cpp.i
 .PHONY : catch2/internal/catch_test_spec_parser.cpp.i
 
 catch2/internal/catch_test_spec_parser.s: catch2/internal/catch_test_spec_parser.cpp.s
@@ -2054,7 +1989,7 @@ catch2/internal/catch_test_spec_parser.s: catch2/internal/catch_test_spec_parser
 
 # target to generate assembly for a file
 catch2/internal/catch_test_spec_parser.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_spec_parser.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_spec_parser.cpp.s
 .PHONY : catch2/internal/catch_test_spec_parser.cpp.s
 
 catch2/internal/catch_textflow.o: catch2/internal/catch_textflow.cpp.o
@@ -2062,7 +1997,7 @@ catch2/internal/catch_textflow.o: catch2/internal/catch_textflow.cpp.o
 
 # target to build an object file
 catch2/internal/catch_textflow.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_textflow.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_textflow.cpp.o
 .PHONY : catch2/internal/catch_textflow.cpp.o
 
 catch2/internal/catch_textflow.i: catch2/internal/catch_textflow.cpp.i
@@ -2070,7 +2005,7 @@ catch2/internal/catch_textflow.i: catch2/internal/catch_textflow.cpp.i
 
 # target to preprocess a source file
 catch2/internal/catch_textflow.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_textflow.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_textflow.cpp.i
 .PHONY : catch2/internal/catch_textflow.cpp.i
 
 catch2/internal/catch_textflow.s: catch2/internal/catch_textflow.cpp.s
@@ -2078,7 +2013,7 @@ catch2/internal/catch_textflow.s: catch2/internal/catch_textflow.cpp.s
 
 # target to generate assembly for a file
 catch2/internal/catch_textflow.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_textflow.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_textflow.cpp.s
 .PHONY : catch2/internal/catch_textflow.cpp.s
 
 catch2/internal/catch_uncaught_exceptions.o: catch2/internal/catch_uncaught_exceptions.cpp.o
@@ -2086,7 +2021,7 @@ catch2/internal/catch_uncaught_exceptions.o: catch2/internal/catch_uncaught_exce
 
 # target to build an object file
 catch2/internal/catch_uncaught_exceptions.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_uncaught_exceptions.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_uncaught_exceptions.cpp.o
 .PHONY : catch2/internal/catch_uncaught_exceptions.cpp.o
 
 catch2/internal/catch_uncaught_exceptions.i: catch2/internal/catch_uncaught_exceptions.cpp.i
@@ -2094,7 +2029,7 @@ catch2/internal/catch_uncaught_exceptions.i: catch2/internal/catch_uncaught_exce
 
 # target to preprocess a source file
 catch2/internal/catch_uncaught_exceptions.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_uncaught_exceptions.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_uncaught_exceptions.cpp.i
 .PHONY : catch2/internal/catch_uncaught_exceptions.cpp.i
 
 catch2/internal/catch_uncaught_exceptions.s: catch2/internal/catch_uncaught_exceptions.cpp.s
@@ -2102,7 +2037,7 @@ catch2/internal/catch_uncaught_exceptions.s: catch2/internal/catch_uncaught_exce
 
 # target to generate assembly for a file
 catch2/internal/catch_uncaught_exceptions.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_uncaught_exceptions.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_uncaught_exceptions.cpp.s
 .PHONY : catch2/internal/catch_uncaught_exceptions.cpp.s
 
 catch2/internal/catch_wildcard_pattern.o: catch2/internal/catch_wildcard_pattern.cpp.o
@@ -2110,7 +2045,7 @@ catch2/internal/catch_wildcard_pattern.o: catch2/internal/catch_wildcard_pattern
 
 # target to build an object file
 catch2/internal/catch_wildcard_pattern.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_wildcard_pattern.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_wildcard_pattern.cpp.o
 .PHONY : catch2/internal/catch_wildcard_pattern.cpp.o
 
 catch2/internal/catch_wildcard_pattern.i: catch2/internal/catch_wildcard_pattern.cpp.i
@@ -2118,7 +2053,7 @@ catch2/internal/catch_wildcard_pattern.i: catch2/internal/catch_wildcard_pattern
 
 # target to preprocess a source file
 catch2/internal/catch_wildcard_pattern.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_wildcard_pattern.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_wildcard_pattern.cpp.i
 .PHONY : catch2/internal/catch_wildcard_pattern.cpp.i
 
 catch2/internal/catch_wildcard_pattern.s: catch2/internal/catch_wildcard_pattern.cpp.s
@@ -2126,7 +2061,7 @@ catch2/internal/catch_wildcard_pattern.s: catch2/internal/catch_wildcard_pattern
 
 # target to generate assembly for a file
 catch2/internal/catch_wildcard_pattern.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_wildcard_pattern.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_wildcard_pattern.cpp.s
 .PHONY : catch2/internal/catch_wildcard_pattern.cpp.s
 
 catch2/internal/catch_xmlwriter.o: catch2/internal/catch_xmlwriter.cpp.o
@@ -2134,7 +2069,7 @@ catch2/internal/catch_xmlwriter.o: catch2/internal/catch_xmlwriter.cpp.o
 
 # target to build an object file
 catch2/internal/catch_xmlwriter.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_xmlwriter.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_xmlwriter.cpp.o
 .PHONY : catch2/internal/catch_xmlwriter.cpp.o
 
 catch2/internal/catch_xmlwriter.i: catch2/internal/catch_xmlwriter.cpp.i
@@ -2142,7 +2077,7 @@ catch2/internal/catch_xmlwriter.i: catch2/internal/catch_xmlwriter.cpp.i
 
 # target to preprocess a source file
 catch2/internal/catch_xmlwriter.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_xmlwriter.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_xmlwriter.cpp.i
 .PHONY : catch2/internal/catch_xmlwriter.cpp.i
 
 catch2/internal/catch_xmlwriter.s: catch2/internal/catch_xmlwriter.cpp.s
@@ -2150,7 +2085,7 @@ catch2/internal/catch_xmlwriter.s: catch2/internal/catch_xmlwriter.cpp.s
 
 # target to generate assembly for a file
 catch2/internal/catch_xmlwriter.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_xmlwriter.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/internal/catch_xmlwriter.cpp.s
 .PHONY : catch2/internal/catch_xmlwriter.cpp.s
 
 catch2/matchers/catch_matchers.o: catch2/matchers/catch_matchers.cpp.o
@@ -2158,7 +2093,7 @@ catch2/matchers/catch_matchers.o: catch2/matchers/catch_matchers.cpp.o
 
 # target to build an object file
 catch2/matchers/catch_matchers.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers.cpp.o
 .PHONY : catch2/matchers/catch_matchers.cpp.o
 
 catch2/matchers/catch_matchers.i: catch2/matchers/catch_matchers.cpp.i
@@ -2166,7 +2101,7 @@ catch2/matchers/catch_matchers.i: catch2/matchers/catch_matchers.cpp.i
 
 # target to preprocess a source file
 catch2/matchers/catch_matchers.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers.cpp.i
 .PHONY : catch2/matchers/catch_matchers.cpp.i
 
 catch2/matchers/catch_matchers.s: catch2/matchers/catch_matchers.cpp.s
@@ -2174,7 +2109,7 @@ catch2/matchers/catch_matchers.s: catch2/matchers/catch_matchers.cpp.s
 
 # target to generate assembly for a file
 catch2/matchers/catch_matchers.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers.cpp.s
 .PHONY : catch2/matchers/catch_matchers.cpp.s
 
 catch2/matchers/catch_matchers_container_properties.o: catch2/matchers/catch_matchers_container_properties.cpp.o
@@ -2182,7 +2117,7 @@ catch2/matchers/catch_matchers_container_properties.o: catch2/matchers/catch_mat
 
 # target to build an object file
 catch2/matchers/catch_matchers_container_properties.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_container_properties.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_container_properties.cpp.o
 .PHONY : catch2/matchers/catch_matchers_container_properties.cpp.o
 
 catch2/matchers/catch_matchers_container_properties.i: catch2/matchers/catch_matchers_container_properties.cpp.i
@@ -2190,7 +2125,7 @@ catch2/matchers/catch_matchers_container_properties.i: catch2/matchers/catch_mat
 
 # target to preprocess a source file
 catch2/matchers/catch_matchers_container_properties.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_container_properties.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_container_properties.cpp.i
 .PHONY : catch2/matchers/catch_matchers_container_properties.cpp.i
 
 catch2/matchers/catch_matchers_container_properties.s: catch2/matchers/catch_matchers_container_properties.cpp.s
@@ -2198,7 +2133,7 @@ catch2/matchers/catch_matchers_container_properties.s: catch2/matchers/catch_mat
 
 # target to generate assembly for a file
 catch2/matchers/catch_matchers_container_properties.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_container_properties.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_container_properties.cpp.s
 .PHONY : catch2/matchers/catch_matchers_container_properties.cpp.s
 
 catch2/matchers/catch_matchers_exception.o: catch2/matchers/catch_matchers_exception.cpp.o
@@ -2206,7 +2141,7 @@ catch2/matchers/catch_matchers_exception.o: catch2/matchers/catch_matchers_excep
 
 # target to build an object file
 catch2/matchers/catch_matchers_exception.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_exception.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_exception.cpp.o
 .PHONY : catch2/matchers/catch_matchers_exception.cpp.o
 
 catch2/matchers/catch_matchers_exception.i: catch2/matchers/catch_matchers_exception.cpp.i
@@ -2214,7 +2149,7 @@ catch2/matchers/catch_matchers_exception.i: catch2/matchers/catch_matchers_excep
 
 # target to preprocess a source file
 catch2/matchers/catch_matchers_exception.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_exception.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_exception.cpp.i
 .PHONY : catch2/matchers/catch_matchers_exception.cpp.i
 
 catch2/matchers/catch_matchers_exception.s: catch2/matchers/catch_matchers_exception.cpp.s
@@ -2222,7 +2157,7 @@ catch2/matchers/catch_matchers_exception.s: catch2/matchers/catch_matchers_excep
 
 # target to generate assembly for a file
 catch2/matchers/catch_matchers_exception.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_exception.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_exception.cpp.s
 .PHONY : catch2/matchers/catch_matchers_exception.cpp.s
 
 catch2/matchers/catch_matchers_floating_point.o: catch2/matchers/catch_matchers_floating_point.cpp.o
@@ -2230,7 +2165,7 @@ catch2/matchers/catch_matchers_floating_point.o: catch2/matchers/catch_matchers_
 
 # target to build an object file
 catch2/matchers/catch_matchers_floating_point.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_floating_point.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_floating_point.cpp.o
 .PHONY : catch2/matchers/catch_matchers_floating_point.cpp.o
 
 catch2/matchers/catch_matchers_floating_point.i: catch2/matchers/catch_matchers_floating_point.cpp.i
@@ -2238,7 +2173,7 @@ catch2/matchers/catch_matchers_floating_point.i: catch2/matchers/catch_matchers_
 
 # target to preprocess a source file
 catch2/matchers/catch_matchers_floating_point.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_floating_point.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_floating_point.cpp.i
 .PHONY : catch2/matchers/catch_matchers_floating_point.cpp.i
 
 catch2/matchers/catch_matchers_floating_point.s: catch2/matchers/catch_matchers_floating_point.cpp.s
@@ -2246,7 +2181,7 @@ catch2/matchers/catch_matchers_floating_point.s: catch2/matchers/catch_matchers_
 
 # target to generate assembly for a file
 catch2/matchers/catch_matchers_floating_point.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_floating_point.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_floating_point.cpp.s
 .PHONY : catch2/matchers/catch_matchers_floating_point.cpp.s
 
 catch2/matchers/catch_matchers_predicate.o: catch2/matchers/catch_matchers_predicate.cpp.o
@@ -2254,7 +2189,7 @@ catch2/matchers/catch_matchers_predicate.o: catch2/matchers/catch_matchers_predi
 
 # target to build an object file
 catch2/matchers/catch_matchers_predicate.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_predicate.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_predicate.cpp.o
 .PHONY : catch2/matchers/catch_matchers_predicate.cpp.o
 
 catch2/matchers/catch_matchers_predicate.i: catch2/matchers/catch_matchers_predicate.cpp.i
@@ -2262,7 +2197,7 @@ catch2/matchers/catch_matchers_predicate.i: catch2/matchers/catch_matchers_predi
 
 # target to preprocess a source file
 catch2/matchers/catch_matchers_predicate.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_predicate.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_predicate.cpp.i
 .PHONY : catch2/matchers/catch_matchers_predicate.cpp.i
 
 catch2/matchers/catch_matchers_predicate.s: catch2/matchers/catch_matchers_predicate.cpp.s
@@ -2270,7 +2205,7 @@ catch2/matchers/catch_matchers_predicate.s: catch2/matchers/catch_matchers_predi
 
 # target to generate assembly for a file
 catch2/matchers/catch_matchers_predicate.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_predicate.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_predicate.cpp.s
 .PHONY : catch2/matchers/catch_matchers_predicate.cpp.s
 
 catch2/matchers/catch_matchers_quantifiers.o: catch2/matchers/catch_matchers_quantifiers.cpp.o
@@ -2278,7 +2213,7 @@ catch2/matchers/catch_matchers_quantifiers.o: catch2/matchers/catch_matchers_qua
 
 # target to build an object file
 catch2/matchers/catch_matchers_quantifiers.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_quantifiers.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_quantifiers.cpp.o
 .PHONY : catch2/matchers/catch_matchers_quantifiers.cpp.o
 
 catch2/matchers/catch_matchers_quantifiers.i: catch2/matchers/catch_matchers_quantifiers.cpp.i
@@ -2286,7 +2221,7 @@ catch2/matchers/catch_matchers_quantifiers.i: catch2/matchers/catch_matchers_qua
 
 # target to preprocess a source file
 catch2/matchers/catch_matchers_quantifiers.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_quantifiers.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_quantifiers.cpp.i
 .PHONY : catch2/matchers/catch_matchers_quantifiers.cpp.i
 
 catch2/matchers/catch_matchers_quantifiers.s: catch2/matchers/catch_matchers_quantifiers.cpp.s
@@ -2294,7 +2229,7 @@ catch2/matchers/catch_matchers_quantifiers.s: catch2/matchers/catch_matchers_qua
 
 # target to generate assembly for a file
 catch2/matchers/catch_matchers_quantifiers.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_quantifiers.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_quantifiers.cpp.s
 .PHONY : catch2/matchers/catch_matchers_quantifiers.cpp.s
 
 catch2/matchers/catch_matchers_string.o: catch2/matchers/catch_matchers_string.cpp.o
@@ -2302,7 +2237,7 @@ catch2/matchers/catch_matchers_string.o: catch2/matchers/catch_matchers_string.c
 
 # target to build an object file
 catch2/matchers/catch_matchers_string.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_string.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_string.cpp.o
 .PHONY : catch2/matchers/catch_matchers_string.cpp.o
 
 catch2/matchers/catch_matchers_string.i: catch2/matchers/catch_matchers_string.cpp.i
@@ -2310,7 +2245,7 @@ catch2/matchers/catch_matchers_string.i: catch2/matchers/catch_matchers_string.c
 
 # target to preprocess a source file
 catch2/matchers/catch_matchers_string.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_string.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_string.cpp.i
 .PHONY : catch2/matchers/catch_matchers_string.cpp.i
 
 catch2/matchers/catch_matchers_string.s: catch2/matchers/catch_matchers_string.cpp.s
@@ -2318,7 +2253,7 @@ catch2/matchers/catch_matchers_string.s: catch2/matchers/catch_matchers_string.c
 
 # target to generate assembly for a file
 catch2/matchers/catch_matchers_string.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_string.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_string.cpp.s
 .PHONY : catch2/matchers/catch_matchers_string.cpp.s
 
 catch2/matchers/catch_matchers_templated.o: catch2/matchers/catch_matchers_templated.cpp.o
@@ -2326,7 +2261,7 @@ catch2/matchers/catch_matchers_templated.o: catch2/matchers/catch_matchers_templ
 
 # target to build an object file
 catch2/matchers/catch_matchers_templated.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_templated.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_templated.cpp.o
 .PHONY : catch2/matchers/catch_matchers_templated.cpp.o
 
 catch2/matchers/catch_matchers_templated.i: catch2/matchers/catch_matchers_templated.cpp.i
@@ -2334,7 +2269,7 @@ catch2/matchers/catch_matchers_templated.i: catch2/matchers/catch_matchers_templ
 
 # target to preprocess a source file
 catch2/matchers/catch_matchers_templated.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_templated.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_templated.cpp.i
 .PHONY : catch2/matchers/catch_matchers_templated.cpp.i
 
 catch2/matchers/catch_matchers_templated.s: catch2/matchers/catch_matchers_templated.cpp.s
@@ -2342,7 +2277,7 @@ catch2/matchers/catch_matchers_templated.s: catch2/matchers/catch_matchers_templ
 
 # target to generate assembly for a file
 catch2/matchers/catch_matchers_templated.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_templated.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_templated.cpp.s
 .PHONY : catch2/matchers/catch_matchers_templated.cpp.s
 
 catch2/matchers/internal/catch_matchers_impl.o: catch2/matchers/internal/catch_matchers_impl.cpp.o
@@ -2350,7 +2285,7 @@ catch2/matchers/internal/catch_matchers_impl.o: catch2/matchers/internal/catch_m
 
 # target to build an object file
 catch2/matchers/internal/catch_matchers_impl.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/internal/catch_matchers_impl.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/internal/catch_matchers_impl.cpp.o
 .PHONY : catch2/matchers/internal/catch_matchers_impl.cpp.o
 
 catch2/matchers/internal/catch_matchers_impl.i: catch2/matchers/internal/catch_matchers_impl.cpp.i
@@ -2358,7 +2293,7 @@ catch2/matchers/internal/catch_matchers_impl.i: catch2/matchers/internal/catch_m
 
 # target to preprocess a source file
 catch2/matchers/internal/catch_matchers_impl.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/internal/catch_matchers_impl.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/internal/catch_matchers_impl.cpp.i
 .PHONY : catch2/matchers/internal/catch_matchers_impl.cpp.i
 
 catch2/matchers/internal/catch_matchers_impl.s: catch2/matchers/internal/catch_matchers_impl.cpp.s
@@ -2366,7 +2301,7 @@ catch2/matchers/internal/catch_matchers_impl.s: catch2/matchers/internal/catch_m
 
 # target to generate assembly for a file
 catch2/matchers/internal/catch_matchers_impl.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/internal/catch_matchers_impl.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/matchers/internal/catch_matchers_impl.cpp.s
 .PHONY : catch2/matchers/internal/catch_matchers_impl.cpp.s
 
 catch2/reporters/catch_reporter_automake.o: catch2/reporters/catch_reporter_automake.cpp.o
@@ -2374,7 +2309,7 @@ catch2/reporters/catch_reporter_automake.o: catch2/reporters/catch_reporter_auto
 
 # target to build an object file
 catch2/reporters/catch_reporter_automake.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_automake.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_automake.cpp.o
 .PHONY : catch2/reporters/catch_reporter_automake.cpp.o
 
 catch2/reporters/catch_reporter_automake.i: catch2/reporters/catch_reporter_automake.cpp.i
@@ -2382,7 +2317,7 @@ catch2/reporters/catch_reporter_automake.i: catch2/reporters/catch_reporter_auto
 
 # target to preprocess a source file
 catch2/reporters/catch_reporter_automake.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_automake.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_automake.cpp.i
 .PHONY : catch2/reporters/catch_reporter_automake.cpp.i
 
 catch2/reporters/catch_reporter_automake.s: catch2/reporters/catch_reporter_automake.cpp.s
@@ -2390,7 +2325,7 @@ catch2/reporters/catch_reporter_automake.s: catch2/reporters/catch_reporter_auto
 
 # target to generate assembly for a file
 catch2/reporters/catch_reporter_automake.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_automake.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_automake.cpp.s
 .PHONY : catch2/reporters/catch_reporter_automake.cpp.s
 
 catch2/reporters/catch_reporter_common_base.o: catch2/reporters/catch_reporter_common_base.cpp.o
@@ -2398,7 +2333,7 @@ catch2/reporters/catch_reporter_common_base.o: catch2/reporters/catch_reporter_c
 
 # target to build an object file
 catch2/reporters/catch_reporter_common_base.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_common_base.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_common_base.cpp.o
 .PHONY : catch2/reporters/catch_reporter_common_base.cpp.o
 
 catch2/reporters/catch_reporter_common_base.i: catch2/reporters/catch_reporter_common_base.cpp.i
@@ -2406,7 +2341,7 @@ catch2/reporters/catch_reporter_common_base.i: catch2/reporters/catch_reporter_c
 
 # target to preprocess a source file
 catch2/reporters/catch_reporter_common_base.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_common_base.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_common_base.cpp.i
 .PHONY : catch2/reporters/catch_reporter_common_base.cpp.i
 
 catch2/reporters/catch_reporter_common_base.s: catch2/reporters/catch_reporter_common_base.cpp.s
@@ -2414,7 +2349,7 @@ catch2/reporters/catch_reporter_common_base.s: catch2/reporters/catch_reporter_c
 
 # target to generate assembly for a file
 catch2/reporters/catch_reporter_common_base.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_common_base.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_common_base.cpp.s
 .PHONY : catch2/reporters/catch_reporter_common_base.cpp.s
 
 catch2/reporters/catch_reporter_compact.o: catch2/reporters/catch_reporter_compact.cpp.o
@@ -2422,7 +2357,7 @@ catch2/reporters/catch_reporter_compact.o: catch2/reporters/catch_reporter_compa
 
 # target to build an object file
 catch2/reporters/catch_reporter_compact.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_compact.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_compact.cpp.o
 .PHONY : catch2/reporters/catch_reporter_compact.cpp.o
 
 catch2/reporters/catch_reporter_compact.i: catch2/reporters/catch_reporter_compact.cpp.i
@@ -2430,7 +2365,7 @@ catch2/reporters/catch_reporter_compact.i: catch2/reporters/catch_reporter_compa
 
 # target to preprocess a source file
 catch2/reporters/catch_reporter_compact.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_compact.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_compact.cpp.i
 .PHONY : catch2/reporters/catch_reporter_compact.cpp.i
 
 catch2/reporters/catch_reporter_compact.s: catch2/reporters/catch_reporter_compact.cpp.s
@@ -2438,7 +2373,7 @@ catch2/reporters/catch_reporter_compact.s: catch2/reporters/catch_reporter_compa
 
 # target to generate assembly for a file
 catch2/reporters/catch_reporter_compact.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_compact.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_compact.cpp.s
 .PHONY : catch2/reporters/catch_reporter_compact.cpp.s
 
 catch2/reporters/catch_reporter_console.o: catch2/reporters/catch_reporter_console.cpp.o
@@ -2446,7 +2381,7 @@ catch2/reporters/catch_reporter_console.o: catch2/reporters/catch_reporter_conso
 
 # target to build an object file
 catch2/reporters/catch_reporter_console.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_console.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_console.cpp.o
 .PHONY : catch2/reporters/catch_reporter_console.cpp.o
 
 catch2/reporters/catch_reporter_console.i: catch2/reporters/catch_reporter_console.cpp.i
@@ -2454,7 +2389,7 @@ catch2/reporters/catch_reporter_console.i: catch2/reporters/catch_reporter_conso
 
 # target to preprocess a source file
 catch2/reporters/catch_reporter_console.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_console.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_console.cpp.i
 .PHONY : catch2/reporters/catch_reporter_console.cpp.i
 
 catch2/reporters/catch_reporter_console.s: catch2/reporters/catch_reporter_console.cpp.s
@@ -2462,7 +2397,7 @@ catch2/reporters/catch_reporter_console.s: catch2/reporters/catch_reporter_conso
 
 # target to generate assembly for a file
 catch2/reporters/catch_reporter_console.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_console.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_console.cpp.s
 .PHONY : catch2/reporters/catch_reporter_console.cpp.s
 
 catch2/reporters/catch_reporter_cumulative_base.o: catch2/reporters/catch_reporter_cumulative_base.cpp.o
@@ -2470,7 +2405,7 @@ catch2/reporters/catch_reporter_cumulative_base.o: catch2/reporters/catch_report
 
 # target to build an object file
 catch2/reporters/catch_reporter_cumulative_base.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_cumulative_base.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_cumulative_base.cpp.o
 .PHONY : catch2/reporters/catch_reporter_cumulative_base.cpp.o
 
 catch2/reporters/catch_reporter_cumulative_base.i: catch2/reporters/catch_reporter_cumulative_base.cpp.i
@@ -2478,7 +2413,7 @@ catch2/reporters/catch_reporter_cumulative_base.i: catch2/reporters/catch_report
 
 # target to preprocess a source file
 catch2/reporters/catch_reporter_cumulative_base.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_cumulative_base.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_cumulative_base.cpp.i
 .PHONY : catch2/reporters/catch_reporter_cumulative_base.cpp.i
 
 catch2/reporters/catch_reporter_cumulative_base.s: catch2/reporters/catch_reporter_cumulative_base.cpp.s
@@ -2486,7 +2421,7 @@ catch2/reporters/catch_reporter_cumulative_base.s: catch2/reporters/catch_report
 
 # target to generate assembly for a file
 catch2/reporters/catch_reporter_cumulative_base.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_cumulative_base.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_cumulative_base.cpp.s
 .PHONY : catch2/reporters/catch_reporter_cumulative_base.cpp.s
 
 catch2/reporters/catch_reporter_event_listener.o: catch2/reporters/catch_reporter_event_listener.cpp.o
@@ -2494,7 +2429,7 @@ catch2/reporters/catch_reporter_event_listener.o: catch2/reporters/catch_reporte
 
 # target to build an object file
 catch2/reporters/catch_reporter_event_listener.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_event_listener.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_event_listener.cpp.o
 .PHONY : catch2/reporters/catch_reporter_event_listener.cpp.o
 
 catch2/reporters/catch_reporter_event_listener.i: catch2/reporters/catch_reporter_event_listener.cpp.i
@@ -2502,7 +2437,7 @@ catch2/reporters/catch_reporter_event_listener.i: catch2/reporters/catch_reporte
 
 # target to preprocess a source file
 catch2/reporters/catch_reporter_event_listener.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_event_listener.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_event_listener.cpp.i
 .PHONY : catch2/reporters/catch_reporter_event_listener.cpp.i
 
 catch2/reporters/catch_reporter_event_listener.s: catch2/reporters/catch_reporter_event_listener.cpp.s
@@ -2510,7 +2445,7 @@ catch2/reporters/catch_reporter_event_listener.s: catch2/reporters/catch_reporte
 
 # target to generate assembly for a file
 catch2/reporters/catch_reporter_event_listener.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_event_listener.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_event_listener.cpp.s
 .PHONY : catch2/reporters/catch_reporter_event_listener.cpp.s
 
 catch2/reporters/catch_reporter_helpers.o: catch2/reporters/catch_reporter_helpers.cpp.o
@@ -2518,7 +2453,7 @@ catch2/reporters/catch_reporter_helpers.o: catch2/reporters/catch_reporter_helpe
 
 # target to build an object file
 catch2/reporters/catch_reporter_helpers.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_helpers.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_helpers.cpp.o
 .PHONY : catch2/reporters/catch_reporter_helpers.cpp.o
 
 catch2/reporters/catch_reporter_helpers.i: catch2/reporters/catch_reporter_helpers.cpp.i
@@ -2526,7 +2461,7 @@ catch2/reporters/catch_reporter_helpers.i: catch2/reporters/catch_reporter_helpe
 
 # target to preprocess a source file
 catch2/reporters/catch_reporter_helpers.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_helpers.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_helpers.cpp.i
 .PHONY : catch2/reporters/catch_reporter_helpers.cpp.i
 
 catch2/reporters/catch_reporter_helpers.s: catch2/reporters/catch_reporter_helpers.cpp.s
@@ -2534,7 +2469,7 @@ catch2/reporters/catch_reporter_helpers.s: catch2/reporters/catch_reporter_helpe
 
 # target to generate assembly for a file
 catch2/reporters/catch_reporter_helpers.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_helpers.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_helpers.cpp.s
 .PHONY : catch2/reporters/catch_reporter_helpers.cpp.s
 
 catch2/reporters/catch_reporter_json.o: catch2/reporters/catch_reporter_json.cpp.o
@@ -2542,7 +2477,7 @@ catch2/reporters/catch_reporter_json.o: catch2/reporters/catch_reporter_json.cpp
 
 # target to build an object file
 catch2/reporters/catch_reporter_json.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_json.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_json.cpp.o
 .PHONY : catch2/reporters/catch_reporter_json.cpp.o
 
 catch2/reporters/catch_reporter_json.i: catch2/reporters/catch_reporter_json.cpp.i
@@ -2550,7 +2485,7 @@ catch2/reporters/catch_reporter_json.i: catch2/reporters/catch_reporter_json.cpp
 
 # target to preprocess a source file
 catch2/reporters/catch_reporter_json.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_json.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_json.cpp.i
 .PHONY : catch2/reporters/catch_reporter_json.cpp.i
 
 catch2/reporters/catch_reporter_json.s: catch2/reporters/catch_reporter_json.cpp.s
@@ -2558,7 +2493,7 @@ catch2/reporters/catch_reporter_json.s: catch2/reporters/catch_reporter_json.cpp
 
 # target to generate assembly for a file
 catch2/reporters/catch_reporter_json.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_json.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_json.cpp.s
 .PHONY : catch2/reporters/catch_reporter_json.cpp.s
 
 catch2/reporters/catch_reporter_junit.o: catch2/reporters/catch_reporter_junit.cpp.o
@@ -2566,7 +2501,7 @@ catch2/reporters/catch_reporter_junit.o: catch2/reporters/catch_reporter_junit.c
 
 # target to build an object file
 catch2/reporters/catch_reporter_junit.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_junit.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_junit.cpp.o
 .PHONY : catch2/reporters/catch_reporter_junit.cpp.o
 
 catch2/reporters/catch_reporter_junit.i: catch2/reporters/catch_reporter_junit.cpp.i
@@ -2574,7 +2509,7 @@ catch2/reporters/catch_reporter_junit.i: catch2/reporters/catch_reporter_junit.c
 
 # target to preprocess a source file
 catch2/reporters/catch_reporter_junit.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_junit.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_junit.cpp.i
 .PHONY : catch2/reporters/catch_reporter_junit.cpp.i
 
 catch2/reporters/catch_reporter_junit.s: catch2/reporters/catch_reporter_junit.cpp.s
@@ -2582,7 +2517,7 @@ catch2/reporters/catch_reporter_junit.s: catch2/reporters/catch_reporter_junit.c
 
 # target to generate assembly for a file
 catch2/reporters/catch_reporter_junit.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_junit.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_junit.cpp.s
 .PHONY : catch2/reporters/catch_reporter_junit.cpp.s
 
 catch2/reporters/catch_reporter_multi.o: catch2/reporters/catch_reporter_multi.cpp.o
@@ -2590,7 +2525,7 @@ catch2/reporters/catch_reporter_multi.o: catch2/reporters/catch_reporter_multi.c
 
 # target to build an object file
 catch2/reporters/catch_reporter_multi.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_multi.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_multi.cpp.o
 .PHONY : catch2/reporters/catch_reporter_multi.cpp.o
 
 catch2/reporters/catch_reporter_multi.i: catch2/reporters/catch_reporter_multi.cpp.i
@@ -2598,7 +2533,7 @@ catch2/reporters/catch_reporter_multi.i: catch2/reporters/catch_reporter_multi.c
 
 # target to preprocess a source file
 catch2/reporters/catch_reporter_multi.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_multi.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_multi.cpp.i
 .PHONY : catch2/reporters/catch_reporter_multi.cpp.i
 
 catch2/reporters/catch_reporter_multi.s: catch2/reporters/catch_reporter_multi.cpp.s
@@ -2606,7 +2541,7 @@ catch2/reporters/catch_reporter_multi.s: catch2/reporters/catch_reporter_multi.c
 
 # target to generate assembly for a file
 catch2/reporters/catch_reporter_multi.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_multi.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_multi.cpp.s
 .PHONY : catch2/reporters/catch_reporter_multi.cpp.s
 
 catch2/reporters/catch_reporter_registrars.o: catch2/reporters/catch_reporter_registrars.cpp.o
@@ -2614,7 +2549,7 @@ catch2/reporters/catch_reporter_registrars.o: catch2/reporters/catch_reporter_re
 
 # target to build an object file
 catch2/reporters/catch_reporter_registrars.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_registrars.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_registrars.cpp.o
 .PHONY : catch2/reporters/catch_reporter_registrars.cpp.o
 
 catch2/reporters/catch_reporter_registrars.i: catch2/reporters/catch_reporter_registrars.cpp.i
@@ -2622,7 +2557,7 @@ catch2/reporters/catch_reporter_registrars.i: catch2/reporters/catch_reporter_re
 
 # target to preprocess a source file
 catch2/reporters/catch_reporter_registrars.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_registrars.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_registrars.cpp.i
 .PHONY : catch2/reporters/catch_reporter_registrars.cpp.i
 
 catch2/reporters/catch_reporter_registrars.s: catch2/reporters/catch_reporter_registrars.cpp.s
@@ -2630,7 +2565,7 @@ catch2/reporters/catch_reporter_registrars.s: catch2/reporters/catch_reporter_re
 
 # target to generate assembly for a file
 catch2/reporters/catch_reporter_registrars.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_registrars.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_registrars.cpp.s
 .PHONY : catch2/reporters/catch_reporter_registrars.cpp.s
 
 catch2/reporters/catch_reporter_sonarqube.o: catch2/reporters/catch_reporter_sonarqube.cpp.o
@@ -2638,7 +2573,7 @@ catch2/reporters/catch_reporter_sonarqube.o: catch2/reporters/catch_reporter_son
 
 # target to build an object file
 catch2/reporters/catch_reporter_sonarqube.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_sonarqube.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_sonarqube.cpp.o
 .PHONY : catch2/reporters/catch_reporter_sonarqube.cpp.o
 
 catch2/reporters/catch_reporter_sonarqube.i: catch2/reporters/catch_reporter_sonarqube.cpp.i
@@ -2646,7 +2581,7 @@ catch2/reporters/catch_reporter_sonarqube.i: catch2/reporters/catch_reporter_son
 
 # target to preprocess a source file
 catch2/reporters/catch_reporter_sonarqube.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_sonarqube.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_sonarqube.cpp.i
 .PHONY : catch2/reporters/catch_reporter_sonarqube.cpp.i
 
 catch2/reporters/catch_reporter_sonarqube.s: catch2/reporters/catch_reporter_sonarqube.cpp.s
@@ -2654,7 +2589,7 @@ catch2/reporters/catch_reporter_sonarqube.s: catch2/reporters/catch_reporter_son
 
 # target to generate assembly for a file
 catch2/reporters/catch_reporter_sonarqube.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_sonarqube.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_sonarqube.cpp.s
 .PHONY : catch2/reporters/catch_reporter_sonarqube.cpp.s
 
 catch2/reporters/catch_reporter_streaming_base.o: catch2/reporters/catch_reporter_streaming_base.cpp.o
@@ -2662,7 +2597,7 @@ catch2/reporters/catch_reporter_streaming_base.o: catch2/reporters/catch_reporte
 
 # target to build an object file
 catch2/reporters/catch_reporter_streaming_base.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_streaming_base.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_streaming_base.cpp.o
 .PHONY : catch2/reporters/catch_reporter_streaming_base.cpp.o
 
 catch2/reporters/catch_reporter_streaming_base.i: catch2/reporters/catch_reporter_streaming_base.cpp.i
@@ -2670,7 +2605,7 @@ catch2/reporters/catch_reporter_streaming_base.i: catch2/reporters/catch_reporte
 
 # target to preprocess a source file
 catch2/reporters/catch_reporter_streaming_base.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_streaming_base.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_streaming_base.cpp.i
 .PHONY : catch2/reporters/catch_reporter_streaming_base.cpp.i
 
 catch2/reporters/catch_reporter_streaming_base.s: catch2/reporters/catch_reporter_streaming_base.cpp.s
@@ -2678,7 +2613,7 @@ catch2/reporters/catch_reporter_streaming_base.s: catch2/reporters/catch_reporte
 
 # target to generate assembly for a file
 catch2/reporters/catch_reporter_streaming_base.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_streaming_base.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_streaming_base.cpp.s
 .PHONY : catch2/reporters/catch_reporter_streaming_base.cpp.s
 
 catch2/reporters/catch_reporter_tap.o: catch2/reporters/catch_reporter_tap.cpp.o
@@ -2686,7 +2621,7 @@ catch2/reporters/catch_reporter_tap.o: catch2/reporters/catch_reporter_tap.cpp.o
 
 # target to build an object file
 catch2/reporters/catch_reporter_tap.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_tap.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_tap.cpp.o
 .PHONY : catch2/reporters/catch_reporter_tap.cpp.o
 
 catch2/reporters/catch_reporter_tap.i: catch2/reporters/catch_reporter_tap.cpp.i
@@ -2694,7 +2629,7 @@ catch2/reporters/catch_reporter_tap.i: catch2/reporters/catch_reporter_tap.cpp.i
 
 # target to preprocess a source file
 catch2/reporters/catch_reporter_tap.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_tap.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_tap.cpp.i
 .PHONY : catch2/reporters/catch_reporter_tap.cpp.i
 
 catch2/reporters/catch_reporter_tap.s: catch2/reporters/catch_reporter_tap.cpp.s
@@ -2702,7 +2637,7 @@ catch2/reporters/catch_reporter_tap.s: catch2/reporters/catch_reporter_tap.cpp.s
 
 # target to generate assembly for a file
 catch2/reporters/catch_reporter_tap.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_tap.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_tap.cpp.s
 .PHONY : catch2/reporters/catch_reporter_tap.cpp.s
 
 catch2/reporters/catch_reporter_teamcity.o: catch2/reporters/catch_reporter_teamcity.cpp.o
@@ -2710,7 +2645,7 @@ catch2/reporters/catch_reporter_teamcity.o: catch2/reporters/catch_reporter_team
 
 # target to build an object file
 catch2/reporters/catch_reporter_teamcity.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_teamcity.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_teamcity.cpp.o
 .PHONY : catch2/reporters/catch_reporter_teamcity.cpp.o
 
 catch2/reporters/catch_reporter_teamcity.i: catch2/reporters/catch_reporter_teamcity.cpp.i
@@ -2718,7 +2653,7 @@ catch2/reporters/catch_reporter_teamcity.i: catch2/reporters/catch_reporter_team
 
 # target to preprocess a source file
 catch2/reporters/catch_reporter_teamcity.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_teamcity.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_teamcity.cpp.i
 .PHONY : catch2/reporters/catch_reporter_teamcity.cpp.i
 
 catch2/reporters/catch_reporter_teamcity.s: catch2/reporters/catch_reporter_teamcity.cpp.s
@@ -2726,7 +2661,7 @@ catch2/reporters/catch_reporter_teamcity.s: catch2/reporters/catch_reporter_team
 
 # target to generate assembly for a file
 catch2/reporters/catch_reporter_teamcity.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_teamcity.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_teamcity.cpp.s
 .PHONY : catch2/reporters/catch_reporter_teamcity.cpp.s
 
 catch2/reporters/catch_reporter_xml.o: catch2/reporters/catch_reporter_xml.cpp.o
@@ -2734,7 +2669,7 @@ catch2/reporters/catch_reporter_xml.o: catch2/reporters/catch_reporter_xml.cpp.o
 
 # target to build an object file
 catch2/reporters/catch_reporter_xml.cpp.o:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_xml.cpp.o
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_xml.cpp.o
 .PHONY : catch2/reporters/catch_reporter_xml.cpp.o
 
 catch2/reporters/catch_reporter_xml.i: catch2/reporters/catch_reporter_xml.cpp.i
@@ -2742,7 +2677,7 @@ catch2/reporters/catch_reporter_xml.i: catch2/reporters/catch_reporter_xml.cpp.i
 
 # target to preprocess a source file
 catch2/reporters/catch_reporter_xml.cpp.i:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_xml.cpp.i
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_xml.cpp.i
 .PHONY : catch2/reporters/catch_reporter_xml.cpp.i
 
 catch2/reporters/catch_reporter_xml.s: catch2/reporters/catch_reporter_xml.cpp.s
@@ -2750,7 +2685,7 @@ catch2/reporters/catch_reporter_xml.s: catch2/reporters/catch_reporter_xml.cpp.s
 
 # target to generate assembly for a file
 catch2/reporters/catch_reporter_xml.cpp.s:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_xml.cpp.s
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2.dir/build.make lib/Catch2/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_xml.cpp.s
 .PHONY : catch2/reporters/catch_reporter_xml.cpp.s
 
 # Help Target
@@ -2760,12 +2695,6 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
-	@echo "... install"
-	@echo "... install/local"
-	@echo "... install/strip"
-	@echo "... list_install_components"
-	@echo "... package"
-	@echo "... package_source"
 	@echo "... rebuild_cache"
 	@echo "... Catch2"
 	@echo "... Catch2WithMain"
@@ -3098,6 +3027,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

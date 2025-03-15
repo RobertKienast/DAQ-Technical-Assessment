@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/main_tests.cpp" "CMakeFiles/unit_tests.dir/main_tests.cpp.o" "gcc" "CMakeFiles/unit_tests.dir/main_tests.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

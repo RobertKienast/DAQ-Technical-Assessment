@@ -57,33 +57,13 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/rob/red/DAQ-Technical-Assessment/firmware/tests
+CMAKE_SOURCE_DIR = /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build
+CMAKE_BINARY_DIR = /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build
 
 #=============================================================================
 # Targets provided globally by CMake.
-
-# Special rule for the target package
-package: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool..."
-	/usr/bin/cpack --config ./CPackConfig.cmake
-.PHONY : package
-
-# Special rule for the target package
-package/fast: package
-.PHONY : package/fast
-
-# Special rule for the target package_source
-package_source:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool for source..."
-	/usr/bin/cpack --config ./CPackSourceConfig.cmake /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build/CPackSourceConfig.cmake
-.PHONY : package_source
-
-# Special rule for the target package_source
-package_source/fast: package_source
-.PHONY : package_source/fast
 
 # Special rule for the target edit_cache
 edit_cache:
@@ -105,56 +85,11 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-.PHONY : list_install_components/fast
-
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
-
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
-
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
-
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build/CMakeFiles /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build/CMakeFiles /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/rob/red/DAQ-Technical-Assessment/firmware/tests/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -180,6 +115,19 @@ preinstall/fast:
 depend:
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
+
+#=============================================================================
+# Target rules for targets named decoder
+
+# Build rule for target.
+decoder: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 decoder
+.PHONY : decoder
+
+# fast build rule for target.
+decoder/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/decoder.dir/build.make CMakeFiles/decoder.dir/build
+.PHONY : decoder/fast
 
 #=============================================================================
 # Target rules for targets named unit_tests
@@ -220,109 +168,53 @@ Catch2WithMain/fast:
 	$(MAKE) $(MAKESILENT) -f lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/build.make lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/build
 .PHONY : Catch2WithMain/fast
 
-#=============================================================================
-# Target rules for targets named dbcppp
+home/rob/red/DAQ-Technical-Assessment/firmware/solution/decoder.o: home/rob/red/DAQ-Technical-Assessment/firmware/solution/decoder.cpp.o
+.PHONY : home/rob/red/DAQ-Technical-Assessment/firmware/solution/decoder.o
 
-# Build rule for target.
-dbcppp: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dbcppp
-.PHONY : dbcppp
+# target to build an object file
+home/rob/red/DAQ-Technical-Assessment/firmware/solution/decoder.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/decoder.dir/build.make CMakeFiles/decoder.dir/home/rob/red/DAQ-Technical-Assessment/firmware/solution/decoder.cpp.o
+.PHONY : home/rob/red/DAQ-Technical-Assessment/firmware/solution/decoder.cpp.o
 
-# fast build rule for target.
-dbcppp/fast:
-	$(MAKE) $(MAKESILENT) -f /home/rob/red/DAQ-Technical-Assessment/firmware/modules/dbcppp/build/CMakeFiles/CMakeFiles/dbcppp.dir/build.make /home/rob/red/DAQ-Technical-Assessment/firmware/modules/dbcppp/build/CMakeFiles/CMakeFiles/dbcppp.dir/build
-.PHONY : dbcppp/fast
+home/rob/red/DAQ-Technical-Assessment/firmware/solution/decoder.i: home/rob/red/DAQ-Technical-Assessment/firmware/solution/decoder.cpp.i
+.PHONY : home/rob/red/DAQ-Technical-Assessment/firmware/solution/decoder.i
 
-#=============================================================================
-# Target rules for targets named libxmlmm
+# target to preprocess a source file
+home/rob/red/DAQ-Technical-Assessment/firmware/solution/decoder.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/decoder.dir/build.make CMakeFiles/decoder.dir/home/rob/red/DAQ-Technical-Assessment/firmware/solution/decoder.cpp.i
+.PHONY : home/rob/red/DAQ-Technical-Assessment/firmware/solution/decoder.cpp.i
 
-# Build rule for target.
-libxmlmm: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libxmlmm
-.PHONY : libxmlmm
+home/rob/red/DAQ-Technical-Assessment/firmware/solution/decoder.s: home/rob/red/DAQ-Technical-Assessment/firmware/solution/decoder.cpp.s
+.PHONY : home/rob/red/DAQ-Technical-Assessment/firmware/solution/decoder.s
 
-# fast build rule for target.
-libxmlmm/fast:
-	$(MAKE) $(MAKESILENT) -f /home/rob/red/DAQ-Technical-Assessment/firmware/modules/dbcppp/build/CMakeFiles/third-party/libxmlmm/CMakeFiles/libxmlmm.dir/build.make /home/rob/red/DAQ-Technical-Assessment/firmware/modules/dbcppp/build/CMakeFiles/third-party/libxmlmm/CMakeFiles/libxmlmm.dir/build
-.PHONY : libxmlmm/fast
+# target to generate assembly for a file
+home/rob/red/DAQ-Technical-Assessment/firmware/solution/decoder.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/decoder.dir/build.make CMakeFiles/decoder.dir/home/rob/red/DAQ-Technical-Assessment/firmware/solution/decoder.cpp.s
+.PHONY : home/rob/red/DAQ-Technical-Assessment/firmware/solution/decoder.cpp.s
 
-#=============================================================================
-# Target rules for targets named dbcparser
+main_tests.o: main_tests.cpp.o
+.PHONY : main_tests.o
 
-# Build rule for target.
-dbcparser: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dbcparser
-.PHONY : dbcparser
+# target to build an object file
+main_tests.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/main_tests.cpp.o
+.PHONY : main_tests.cpp.o
 
-# fast build rule for target.
-dbcparser/fast:
-	$(MAKE) $(MAKESILENT) -f /home/rob/red/DAQ-Technical-Assessment/firmware/modules/dbcppp/build/CMakeFiles/tools/dbcppp/CMakeFiles/dbcparser.dir/build.make /home/rob/red/DAQ-Technical-Assessment/firmware/modules/dbcppp/build/CMakeFiles/tools/dbcppp/CMakeFiles/dbcparser.dir/build
-.PHONY : dbcparser/fast
+main_tests.i: main_tests.cpp.i
+.PHONY : main_tests.i
 
-#=============================================================================
-# Target rules for targets named dbcppp_Test
+# target to preprocess a source file
+main_tests.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/main_tests.cpp.i
+.PHONY : main_tests.cpp.i
 
-# Build rule for target.
-dbcppp_Test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dbcppp_Test
-.PHONY : dbcppp_Test
+main_tests.s: main_tests.cpp.s
+.PHONY : main_tests.s
 
-# fast build rule for target.
-dbcppp_Test/fast:
-	$(MAKE) $(MAKESILENT) -f /home/rob/red/DAQ-Technical-Assessment/firmware/modules/dbcppp/build/CMakeFiles/tests/CMakeFiles/dbcppp_Test.dir/build.make /home/rob/red/DAQ-Technical-Assessment/firmware/modules/dbcppp/build/CMakeFiles/tests/CMakeFiles/dbcppp_Test.dir/build
-.PHONY : dbcppp_Test/fast
-
-#=============================================================================
-# Target rules for targets named RunTests
-
-# Build rule for target.
-RunTests: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 RunTests
-.PHONY : RunTests
-
-# fast build rule for target.
-RunTests/fast:
-	$(MAKE) $(MAKESILENT) -f /home/rob/red/DAQ-Technical-Assessment/firmware/modules/dbcppp/build/CMakeFiles/tests/CMakeFiles/RunTests.dir/build.make /home/rob/red/DAQ-Technical-Assessment/firmware/modules/dbcppp/build/CMakeFiles/tests/CMakeFiles/RunTests.dir/build
-.PHONY : RunTests/fast
-
-#=============================================================================
-# Target rules for targets named dbcppp_ExampleBasicUsage
-
-# Build rule for target.
-dbcppp_ExampleBasicUsage: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dbcppp_ExampleBasicUsage
-.PHONY : dbcppp_ExampleBasicUsage
-
-# fast build rule for target.
-dbcppp_ExampleBasicUsage/fast:
-	$(MAKE) $(MAKESILENT) -f /home/rob/red/DAQ-Technical-Assessment/firmware/modules/dbcppp/build/CMakeFiles/examples/BasicUsage/CMakeFiles/dbcppp_ExampleBasicUsage.dir/build.make /home/rob/red/DAQ-Technical-Assessment/firmware/modules/dbcppp/build/CMakeFiles/examples/BasicUsage/CMakeFiles/dbcppp_ExampleBasicUsage.dir/build
-.PHONY : dbcppp_ExampleBasicUsage/fast
-
-#=============================================================================
-# Target rules for targets named decoder
-
-# Build rule for target.
-decoder: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 decoder
-.PHONY : decoder
-
-# fast build rule for target.
-decoder/fast:
-	$(MAKE) $(MAKESILENT) -f main_tests/CMakeFiles/decoder.dir/build.make main_tests/CMakeFiles/decoder.dir/build
-.PHONY : decoder/fast
-
-#=============================================================================
-# Target rules for targets named decoder_tests
-
-# Build rule for target.
-decoder_tests: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 decoder_tests
-.PHONY : decoder_tests
-
-# fast build rule for target.
-decoder_tests/fast:
-	$(MAKE) $(MAKESILENT) -f main_tests/CMakeFiles/decoder_tests.dir/build.make main_tests/CMakeFiles/decoder_tests.dir/build
-.PHONY : decoder_tests/fast
+# target to generate assembly for a file
+main_tests.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/main_tests.cpp.s
+.PHONY : main_tests.cpp.s
 
 # Help Target
 help:
@@ -331,24 +223,17 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
-	@echo "... install"
-	@echo "... install/local"
-	@echo "... install/strip"
-	@echo "... list_install_components"
-	@echo "... package"
-	@echo "... package_source"
 	@echo "... rebuild_cache"
-	@echo "... RunTests"
 	@echo "... Catch2"
 	@echo "... Catch2WithMain"
-	@echo "... dbcparser"
-	@echo "... dbcppp"
-	@echo "... dbcppp_ExampleBasicUsage"
-	@echo "... dbcppp_Test"
 	@echo "... decoder"
-	@echo "... decoder_tests"
-	@echo "... libxmlmm"
 	@echo "... unit_tests"
+	@echo "... home/rob/red/DAQ-Technical-Assessment/firmware/solution/decoder.o"
+	@echo "... home/rob/red/DAQ-Technical-Assessment/firmware/solution/decoder.i"
+	@echo "... home/rob/red/DAQ-Technical-Assessment/firmware/solution/decoder.s"
+	@echo "... main_tests.o"
+	@echo "... main_tests.i"
+	@echo "... main_tests.s"
 .PHONY : help
 
 

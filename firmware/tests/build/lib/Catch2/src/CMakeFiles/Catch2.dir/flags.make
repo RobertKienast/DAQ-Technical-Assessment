@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/rob/red/DAQ-Technical-Assessment/firmware/tests/lib/Catch2/src/catch2/.. -I/home/rob/red/DAQ-Technical-Assessment/firmware/tests/build/lib/Catch2/generated-includes
+CXX_INCLUDES = -I/home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/lib/Catch2/src/catch2/.. -I/home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/build/lib/Catch2/generated-includes
 
-CXX_FLAGS = -ffile-prefix-map=/home/rob/red/DAQ-Technical-Assessment/firmware/tests/lib/Catch2/=
+CXX_FLAGS = -ffile-prefix-map=/home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/lib/Catch2/=
 

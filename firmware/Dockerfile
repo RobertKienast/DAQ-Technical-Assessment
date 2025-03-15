@@ -35,6 +35,16 @@ RUN cd modules/dbcppp/build && make install
 RUN cd modules/dbcppp/build && ldconfig
 
 
+#RUN rm -rf solution/main_unit_tests/lib/dbcppp
+#RUN git clone --recursive https://github.com/xR3b0rn/dbcppp.git solution/main_unit_tests/lib/dbcppp
+#RUN cd solution/main_unit_tests/lib/dbcppp && mkdir build
+#RUN cd solution/main_unit_tests/lib/dbcppp/build && cmake -DCMAKE_BUILD_TYPE=Release ..
+#RUN cd solution/main_unit_tests/lib/dbcppp/build && make -j
+#RUN cd solution/main_unit_tests/lib/dbcppp/build && make RunTests
+#RUN cd solution/main_unit_tests/lib/dbcppp/build && make install
+#RUN cd solution/main_unit_tests/lib/dbcppp/build && ldconfig
+
+RUN cd tests/lib && git clone https://github.com/catchorg/Catch2.git 
 
 
 
@@ -47,9 +57,13 @@ RUN cd build/ && cmake ..
 
 RUN cd build/ && make -j    
 
-RUN cd tests/build && cmake ..
-RUN cd tests/build && make
+#RUN cd tests && rm build -rf 
+#RUN cd tests && mkdir build
+##RUN cd tests/build && cmake ..
+#RUN cd tests/build && make
 
-#ENTRYPOINT ["./build/solution/answer"]
-ENTRYPOINT ["./tests/build/unit_tests"]
-#ENTRYPOINT ["/bin/bash"]
+
+#ENTRYPOINT ["./build/solution/answer > output.txt"]
+#ENTRYPOINT ["./tests/build/unit_tests"]
+ENTRYPOINT ["/usr/bin/bash"]
+

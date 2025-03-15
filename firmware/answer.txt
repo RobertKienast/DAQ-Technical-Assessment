@@ -2,7 +2,81 @@ Use this file to write your answer to Stage 2 of the firmware tasks.
 
 CAN
 Q1:
+..
+Looking at the protocols mentioned:
+CAN and I2C can communicate/request data with/from multiple devices (is/supports Multi-master)
+where as
+USB, PCie are point to point meaning that if a part wanted to request data from other parts 
+it would need to be connected hub which would then delegate these requests 
+(which would be slightly more inefficent plus with CAN/I2C there is mechanisms to prevent data collision
+and better/more robust error handling compared to these protocols where this does not come out of the box)
+SPI is sends continous streams of data (all the previous send frames) from a device to (potentially) multiple 
+devices. The issue where is that only one device can be the sender(master) at one time (which could be a big bottle neck).
+..
+Therefore an advantage of CAN is that multiple devices could request and send data at the time which
+could handy if you have multiple devices that to adjust themselves quickly to new situation.
+In the CAN protocol each devices can request data independly (no master unit required) 
+
+CAN unlike I2C (has none) has build in error detection and correction meaning it would be more reliable than
+I2C especially if have many sensor sending data. CAN also has a 11bit or 29bit (in CAN FD frame) addresses
+which is bigger than I2C max 10 (so more devices).
+
+(https://automotivevehicletesting.com/in-vehicle-networks/can-bus-protocol/#Bus_Arbitration)
+CAN has very easy message abitration, if you want something to be high priority 
+you just set the CAN_ID to be really low and then it will have a high priority,
+which is good as it means you can be sure critical systems like Airbags will 
+akways deploy quickly.
+
+Disadvantges of CAN protocol
+(https://www.buenoptic.net/encyclopedia/item/537-maximum-cable-length-for-a-can-bus.html)
+Seemly CAN protocol can only support 1Mbit/Sec up to 40 meters 
+than only 500kbits/sec up to 100 meters and 100kbits/sec to 500meters.
+So therefore using the CAN protocol is not suitable for most networking situations
+as the speed performance degradation for normal applications is just too much.
+
+While with CAN a lot of devices can request at the same time, 
+comparitively the total data transfer speed is pretty low as we showed before 
+we can get 1Mbits/sec, with SPI (another multi master protocol) on arduino you can achieve theorically 4Mbits/Sec (a lot more).
+(https://stackoverflow.com/questions/74566387/what-is-the-maximum-data-transfer-speed-using-spi-interface-on-arduino)
+
+(https://dev.to/living_syn/can-bus-message-security-3h43)
+Seemly there is no encryption on CAN frames meaning that it is completly unusable 
+for public networking due to massive security concerns.
+
 
 Q2:
+Joke answer
+ヅ The CAN protocol is firstly used a lot in the automotive industry so it would be 
+helpful for people to learn it to have a better chance of working in the industry ヅ
+
+Actual answer
+addressing the weakness first. Encryption is really not need and just slows 
+down the speed at this is not broadcasting anything publicly just internally and 
+then recorded for use by the Redback teams. 
+While the data transfer speed is comparitively low, what is being sent it sensor data
+which is not big unlike i.e movies and thus you don't need a high transfer speed.
+And since the sensors are all on the car and there connected - the performance degradation is
+a nonissue as they will be in close proxiamty anyway and thus no performance drop will be felt.
+
+Looking at the advantage having the sensors/devices being able to query each other at the same time
+could be very useful as this could make the devices do decisions quicker with the new data.
+The CAN protocol also has error checking and is very resistant to interference which means that 
+the airbags won't deploy accidently and that the devices can trust the data. 
 
 STM32 Chip Selection
+https://www.st.com/en/microcontrollers-microprocessors/stm32f767bi.html
+
+Why:
+Does it exceed requirements - not really
+It meets at the requirements. It has other features such as a true random generator etc. 
+
+Except: all chips I found had having 12 16bit times - is has 10 16bit and 2 32bit
+but this chip atleast then has 2x16bit motor control PWM synch timers which could also be used
+(claims Up to 18 timers: up to thirteen 16-bit (1x low- power 16-bit timer available in Stop mode))
+
+it needs a 1.2V of power.
+
+Size I read correctly it 20mmx20mm
+
+Cost:Depends on how much is ordered for 1-9 it is $21.64 per unit
+https://estore.st.com/en/stm32f765zit7tr-cpn.html

@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/rob/red/DAQ-Technical-Assessment/firmware/tests/lib/Catch2/src/catch2/internal/catch_main.cpp" "lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/catch2/internal/catch_main.cpp.o" "gcc" "lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/catch2/internal/catch_main.cpp.o.d"
+  "/home/rob/red/DAQ-Technical-Assessment/firmware/main_unit_tests/lib/Catch2/src/catch2/internal/catch_main.cpp" "lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/catch2/internal/catch_main.cpp.o" "gcc" "lib/Catch2/src/CMakeFiles/Catch2WithMain.dir/catch2/internal/catch_main.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

@@ -1,15 +1,23 @@
 
 #include "decoder.hpp"
+#include <cstdio>
+#include <sstream>
+#include <stdio.h>
+#include <spawn.h>
+#include <sys/wait.h>
+#include <fcntl.h>
+#include <string>
 
+// So essentially all the functionality is done in decoder
+// due to the testing of catch2 - testing with a main function is a pain
 
-
-
-//std::unordered_map<uint64_t, const dbcppp::IMessage *> extractDcbFile(std::string file, std::shared_ptr<dbcppp::INetwork> net);
-
+// I ain't gon lie I did not read that it had to be written to file not stdout
+// so this a makeshift solution
 
 
 int main()
-{   
-    run();
+{
+
+    decode("../dbc-files/ControlBus.dbc", "../dbc-files/SensorBus.dbc", "../dbc-files/TractiveBus.dbc", "../dump.log");
     return 0;
 }
