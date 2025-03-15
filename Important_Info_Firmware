@@ -1,0 +1,6 @@
+Sorry this is commited 2 hours late - I just realized that some intrsuctions could be confusing
+I have attempted the firmware component
+- essentially I make my code to run on stdout instead of writing to a file (I am an idiot)
+  - I wrote in the instructions that this is fixed by just running ./answers > output.txt (the entrypoint does this aswell, so no need to edit that)
+  - However I forget to do docker cp and attach the file (So you might have to do that sorry)
+- Do not use the entry point for testing (I forget to remove it) instead follow the instructions given in brainstorming
